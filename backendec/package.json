@@ -4,8 +4,35 @@
   "description": "Dockerized NodeJS API",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/serverrouter.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Allen Tokjuman",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.1",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.7",
+    "pg": "^8.11.2",
+    "smtp-server": "^3.13.0",
+    "sneaks-api": "^1.2.3",
+    "sql-template-strings": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/nodemailer": "^6.4.9",
+    "@types/pg": "^8.10.2",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.1.6"
+  }
 }
