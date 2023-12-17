@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { requestLogger, corsOptions } from '../helpers/requests'
 require('dotenv').config()
-import express, {  } from 'express'
+import express from 'express'
 import cors from 'cors'
 import { router as populateRouter } from '../routes/populateRouter'
 
