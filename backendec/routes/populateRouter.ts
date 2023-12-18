@@ -14,9 +14,9 @@ router.post('/search', async (request: Request, response: Response) => {
 	const limit: number = body.limit
 	// const productsObj: any
 
-	const productsObj: any = sneaks.getProducts(searchTerm, 1, async (err: any, products: any) => {
+	const productsObj: any = sneaks.getProducts(searchTerm, 5, async (err: any, products: any) => {
 		// console.log(products)
-		console.log(products[0])
+		console.log(products)
 		// productsObj = products[0]
 		// productsObj = products
 		return products
