@@ -866,7 +866,7 @@ const NMDR2: IndProduct = {
 	]
 }
 
-const Yeezy350: IndProduct = {
+const Yeezy350Base: IndProduct = {
 	id: 11,
 	brand: 'Yeezy',
 	brandId: 2,
@@ -1590,7 +1590,8 @@ const YeezySlides: IndProduct = {
 	]
 }
 
-const NikeAF1: IndProduct = {
+
+const NikeAF1Base: IndProduct = {
 	id: 20,
 	brand: 'Nike',
 	brandId: 3,
@@ -1761,7 +1762,7 @@ const NikeAF1LV8: IndProduct = {
 	]
 }
 
-const NikeAirMax97: IndProduct = {
+const NikeAirMax97Base: IndProduct = {
 	id: 22,
 	brand: 'Nike',
 	brandId: 3,
@@ -2508,7 +2509,7 @@ const AJ4CJ: IndProduct = {
 	]
 }
 
-const AJ4: IndProduct = {
+const AJ4Base: IndProduct = {
 	id: 32,
 	brand: 'Air Jordan',
 	brandId: 4,
@@ -2595,7 +2596,7 @@ const AJ4: IndProduct = {
 	]
 }
 
-const AJ5: IndProduct = {
+const AJ5Base: IndProduct = {
 	id: 33,
 	brand: 'Air Jordan',
 	brandId: 4,
@@ -2713,7 +2714,7 @@ const AJ5: IndProduct = {
 	]
 }
 
-const NB2002R: IndProduct = {
+const NB2002RBase: IndProduct = {
 	id: 34,
 	brand: 'New Balance',
 	brandId: 5,
@@ -2832,7 +2833,7 @@ const NB2002R: IndProduct = {
 	]
 }
 
-const NB530: IndProduct = {
+const NB530Base: IndProduct = {
 	id: 35,
 	brand: 'New Balance',
 	brandId: 5,
@@ -2983,7 +2984,7 @@ const NB530: IndProduct = {
 	]
 }
 
-const NB5740: IndProduct = {
+const NB5740Base: IndProduct = {
 	id: 36,
 	brand: 'New Balance',
 	brandId: 5,
@@ -3153,3 +3154,264 @@ const NB5740Bape: IndProduct = {
 		}
 	]
 }
+
+//Models:
+const ultraBoost: Models = {
+	id: 1,
+	name: 'UltraBoost',
+	brandId: 1,
+	brand: 'Adidas',
+	allProducts: [
+		ultraBoostLight,
+		ultraBoost1,
+		ultraBoost22,
+		ultraBoost4
+	]
+}
+
+const superStar: Models = {
+	id: 2,
+	name: 'Superstar',
+	brandId: 1,
+	brand: 'Adidas',
+	allProducts: [
+		superStarOriginal,
+		superStarGore
+	]
+}
+
+const stanSmith: Models = {
+	id: 3,
+	name: 'Stan Smith',
+	brandId: 1,
+	brand: 'Adidas',
+	allProducts: [
+		stanSmithOriginal,
+		stanSmithBape
+	]
+}
+
+const NMD: Models = {
+	id: 4,
+	name: 'NMD',
+	brandId: 1,
+	brand: 'Adidas',
+	allProducts: [
+		NMDR1,
+		NMDR2
+	]
+}
+
+const Yeezy350: Models = {
+	id: 1,
+	name: 'Yeezy 350',
+	brandId: 2,
+	brand: 'Yeezy',
+	allProducts: [
+		Yeezy350Base
+	]
+}
+
+const Yeezy500: Models = {
+	id: 2,
+	name: 'Yeezy 500',
+	brandId: 2,
+	brand: 'Yeezy',
+	allProducts: [
+		Yeezy500Base,
+		Yeezy500Boot,
+		Yeezy500High
+	]
+}
+
+const Yeezy700: Models = {
+	id: 3,
+	name: 'Yeezy 500',
+	brandId: 2,
+	brand: 'Yeezy',
+	allProducts: [
+		Yeezy700V2,
+		Yeezy700V3,
+		Yeezy700HiRes
+	]
+}
+
+const YeezyOpen: Models = {
+	id: 4,
+	name: 'Yeezy Foam Runner | Yeezy Slides',
+	brandId: 2,
+	brand: 'Yeezy',
+	allProducts: [
+		YeezyFoamRnr,
+		YeezySlides
+	]
+}
+
+const NikeAF1: Models = {
+	id: 1,
+	name: 'Nike Air Force 1',
+	brandId: 3,
+	brand: 'Nike',
+	allProducts: [
+		NikeAF1Base,
+		NikeAF1LV8
+	]
+}
+
+const NikeAirMax97: Models = {
+	id: 2,
+	name: 'Nike Air Max 97',
+	brandId: 3,
+	brand: 'Nike',
+	allProducts: [
+		NikeAirMax97Base
+	]
+}
+
+const NikeDunk: Models = {
+	id: 3,
+	name: 'Nike Dunk',
+	brandId: 3,
+	brand: 'Nike',
+	allProducts: [
+		NikeDunkHigh,
+		NikeDunkLow
+	]
+}
+
+const NikeBlazer: Models = {
+	id: 4,
+	name: 'Nike Blazer',
+	brandId: 3,
+	brand: 'Nike',
+	allProducts: [
+		NikeBlazerLow,
+		NikeBlazerMid,
+		NikeBlazerOW
+	]
+}
+
+const AJ1: Models = {
+	id: 1,
+	name: 'Air Jordan 1',
+	brandId: 4,
+	brand: 'Air Jordan',
+	allProducts: [
+		AJ1Low,
+		AJ1Mid,
+		AJ1High
+	]
+}
+
+const AJ4: Models = {
+	id: 2,
+	name: 'Air Jordan 4',
+	brandId: 4,
+	brand: 'Air Jordan',
+	allProducts: [
+		AJ4CJ,
+		AJ4Base
+	]
+}
+
+const AJ5: Models = {
+	id: 3,
+	name: 'Air Jordan 5',
+	brandId: 4,
+	brand: 'Air Jordan',
+	allProducts: [
+		AJ5Base
+	]
+}
+
+const NB2002R: Models = {
+	id: 1,
+	name: 'New Balance 2002R',
+	brandId: 5,
+	brand: 'New Balance',
+	allProducts: [
+		NB2002RBase
+	]
+}
+
+const NB530: Models = {
+	id: 2,
+	name: 'New Balance 530',
+	brandId: 5,
+	brand: 'New Balance',
+	allProducts: [
+		NB530Base
+	]
+}
+
+const NB5740: Models = {
+	id: 3,
+	name: 'New Balance 57/40',
+	brandId: 5,
+	brand: 'New Balance',
+	allProducts: [
+		NB5740Base,
+		NB5740Bape
+	]
+}
+
+//Brands:
+const Adidas: Brands = {
+	id: 1,
+	name: 'Adidas',
+	allProducts: [
+		ultraBoost,
+		superStar,
+		stanSmith,
+		NMD
+	]
+}
+
+const Yeezy: Brands = {
+	id: 2,
+	name: 'Yeezy',
+	allProducts: [
+		Yeezy350,
+		Yeezy500,
+		Yeezy700,
+		YeezyOpen
+	]
+}
+
+const Nike: Brands = {
+	id: 3,
+	name: 'Nike',
+	allProducts: [
+		NikeAF1,
+		NikeAirMax97,
+		NikeDunk,
+		NikeBlazer
+	]
+}
+
+const AirJordan: Brands = {
+	id: 4,
+	name: 'Air Jordan',
+	allProducts: [
+		AJ1,
+		AJ4,
+		AJ5
+	]
+}
+
+const NewBalance: Brands = {
+	id: 5,
+	name: 'New Balance',
+	allProducts: [
+		NB2002R,
+		NB530,
+		NB5740
+	]
+}
+
+export { ultraBoostLight, ultraBoost1, ultraBoost22, ultraBoost4, superStarOriginal, superStarGore, stanSmithOriginal, stanSmithBape, NMDR1, NMDR2, Yeezy350Base, Yeezy500Base, Yeezy500Boot,
+	Yeezy500High, Yeezy700V2, Yeezy700V3, Yeezy700HiRes, YeezyFoamRnr, YeezySlides, NikeAF1Base, NikeAF1LV8, NikeAirMax97Base, NikeDunkHigh, NikeDunkLow, NikeBlazerMid, NikeBlazerLow,
+	NikeBlazerOW, AJ1Low, AJ1Mid, AJ1High, AJ4CJ, AJ4Base, AJ5Base, NB2002RBase, NB530Base, NB5740Base, NB5740Bape,
+	ultraBoost, superStar, stanSmith, NMD, Yeezy350, Yeezy500, Yeezy700, YeezyOpen, NikeAF1, NikeAirMax97, NikeDunk, NikeBlazer, AJ1, AJ4, AJ5, NB2002R, NB530, NB5740,
+	Adidas, Yeezy, Nike, AirJordan, NewBalance }
+
