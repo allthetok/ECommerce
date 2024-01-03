@@ -2236,3 +2236,920 @@ const NikeBlazerOW: IndProduct = {
 		}
 	]
 }
+
+const AJ1Low: IndProduct = {
+	id: 28,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 1,
+	modelName: 'Air Jordan 1',
+	name: `Air Jordan 1 Low Shoes`,
+	releaseDate: '2020-09-20',
+	colors: [
+		{
+			color: 'Black/White/Yellow Ochre',
+			images: ['https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/525eacce-5bfe-48b5-b6de-4ce71c6ba657/air-jordan-1-low-mens-shoes-9xSzrW.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a48f0a03-6639-4452-bf10-3c362182adbd/air-jordan-1-low-mens-shoes-9xSzrW.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/11ed99b7-0486-4fee-bdf5-78dffda009b6/air-jordan-1-low-mens-shoes-9xSzrW.png']
+		}
+	],
+	price: 115,
+	description: `Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.`,
+	sizes: [
+		{
+			color: 'Black/White/Yellow Ochre',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const AJ1Mid: IndProduct = {
+	id: 29,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 1,
+	modelName: 'Air Jordan 1',
+	name: `Air Jordan 1 Mid Shoes`,
+	releaseDate: '2023-08-29',
+	colors: [
+		{
+			color: 'White/White/Black/Black',
+			images: ['https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/288a2235-54ce-4f8e-a133-0117cbc381b4/air-jordan-1-mid-mens-shoes-X5pM09.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/852a384c-a6ef-45af-9bf7-2ed47d64ae4f/air-jordan-1-mid-mens-shoes-X5pM09.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ce623fbc-daeb-47ea-ae70-1ffa4847c569/air-jordan-1-mid-mens-shoes-X5pM09.png',]
+		},
+		{
+			color: 'White/Black/Gym Red',
+			images: ['https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/31ff59e2-89d0-4a83-839a-656618674782/air-jordan-1-mid-mens-shoes-X5pM09.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2838806d-22c6-4cba-b015-8478a6ce6d64/air-jordan-1-mid-mens-shoes-X5pM09.png',
+				'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/82d26c28-58a2-464f-881e-b20d2b5eafa8/air-jordan-1-mid-mens-shoes-X5pM09.png']
+		}
+	],
+	price: 125,
+	description: `Inspired by the original AJ1, this mid-top edition maintains the iconic look you love while choice colors and crisp leather give it a distinct identity.`,
+	sizes: [
+		{
+			color: 'White/White/Black/Black',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'White/Black/Gym Red',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const AJ1High: IndProduct = {
+	id: 30,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 1,
+	modelName: 'Air Jordan 1',
+	name: `Air Jordan 1 Retro High OG`,
+	releaseDate: '2023-07-22',
+	colors: [
+		{
+			color: 'University Blue/Black/White',
+			images: ['https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIa555088-711_600x.jpg?v=1668543640',
+				'https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIb555088-711_600x.jpg?v=1668543640',
+				'https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIc555088-711_600x.jpg?v=1668545663',]
+		},
+		{
+			color: 'Taxi/Black/Sail',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/358111/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/358111/3.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/358111/4.jpg',]
+		}
+	],
+	price: 250,
+	description: `The Air Jordan 1 Retro High OG pays homage to Michael Jordan’s college with a color scheme that recalls the 2018 ‘Bred Toe’ AJ1 release. The shoe features white quarter panels and black overlays on the Swoosh and forefoot against an all-leather base. The toe box, heel, and collar flap are adorned with University Blue accents, with a lateral-side classic Wings logo. The breathable nylon tongue has a retro Nike tag, and lightweight cushioning is provided by a white rubber midsole with an Air-sole heel unit within a polyurethane wedge. Underfoot, sturdy traction is ensured by the blue rubber outsole.`,
+	sizes: [
+		{
+			color: 'University Blue/Black/White',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Taxi/Black/Sail',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const AJ4CJ: IndProduct = {
+	id: 31,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 2,
+	modelName: 'Air Jordan 4',
+	name: `Air Jordan 4 Retro Travis Scott Cactus Jack`,
+	releaseDate: '2018-06-09',
+	colors: [
+		{
+			color: 'University Blue/Black/Varsity Red',
+			images: ['https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/tfcnf6xbezatpegexxx7/air-jordan-4-travis-scott-cactus-jack-release-date.jpg',
+				'https://static.nike.com/a/images/t_prod_sc/w_640,c_limit,f_auto/zj7bmitm7dh80fxnayu9/air-jordan-4-travis-scott-cactus-jack-release-date.jpg',
+				'https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/hl5u7kku1dlurbgborm6/air-jordan-4-travis-scott-cactus-jack-release-date.jpg']
+		}
+	],
+	price: 1200,
+	description: `The only way to describe the Travis Scott Air Jordan 4 Retros properly would be to use the rappers own adlib: la flame. These Jordan 4s were made in collaboration with 
+	rapper, Travis Scott and nicknamed the "Cactus Jack" edition. Similar in design to the infamous Eminem pair, these feature a lighter shade of blue suede on the upper. Black 
+	accents, a red liner, paint splatter detailing, a white midsole and "Cactus Jack" branding on the back heel tab finish things off for this pair. These dropped in June of 2018 for $225 
+	and came exclusively in men’s sizes. If you’re a fan of Travis Scott and the AJ 4, this pair is another must-have. Straight up!`,
+	sizes: [
+		{
+			color: 'University Blue/Black/Varsity Red',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const AJ4: IndProduct = {
+	id: 32,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 2,
+	modelName: 'Air Jordan 4',
+	name: `Air Jordan 4 Retro OG`,
+	releaseDate: '2023-09-09',
+	colors: [
+		{
+			color: 'White/Fire Red/Black/Neutral Grey',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/367078/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/367078/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/367078/3.jpg',]
+		},
+		{
+			color: 'Black/Tour Yellow',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/353523/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/353523/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/353523/3.jpg']
+		}
+	],
+	price: 300,
+	description: `The Air Jordan 4 is a classic sneaker in the Air Jordan line. It was released in 1989 and designed by Nike designer Tinker Hatfield, paying homage to the original Air Jordan design while introducing new colorways and design features.
+		The sneaker is known for its distinctive design, with visible Air unit technology and top-quality leather construction. The Air Jordan 4 was created to offer superior comfort, durability, and style to come up with an extraordinary product. In our opinion, one of the most notable features of the Air Jordan 4 is the “Wings” on the side of the shoe, which represent Michael Jordan's soaring abilities on the basketball court. The shoes also feature a unique lacing system with plastic Wing eyelets, which provide added support and durability.
+		Over the years, the Air Jordan 4 has been released in a range of colors and collaborations, including the Jordan 4 Retro Undefeated (2018 Sample), which was released as part of a collaboration between Nike and LA-based streetwear brand Undefeated. These collaborations and limited-edition releases have only added to the sneaker's popularity.
+		The brand comprises a range of other products, including clothing and accessories. The line includes t-shirts, hoodies, shorts, and hats, among other items. The Air Jordan 4 works best with other products in the Air Jordan. The brand's clothing and accessories are compatible with the shoe's style and design. A perfect example of this is the Air Jordan Hoodie, which perfectly complements the style and design of the Air Jordan 4.`,
+	sizes: [
+		{
+			color: 'White/Fire Red/Black/Neutral Grey',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Black/Tour Yellow',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const AJ5: IndProduct = {
+	id: 33,
+	brand: 'Air Jordan',
+	brandId: 4,
+	modelId: 3,
+	modelName: 'Air Jordan 5',
+	name: `Air Jordan 5 Retro Shoes`,
+	releaseDate: '2023-03-04',
+	colors: [
+		{
+			color: 'University Blue/Black/White',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/343845/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/343845/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/343845/3.jpg']
+		},
+		{
+			color: 'Deep Burgundy/Light Graphite/Metallic Silver',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/365489/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/365489/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/365489/3.jpg',]
+		},
+		{
+			color: 'Black/Racer Blue/Reflective Silver',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/284019/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/284019/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/284019/3.jpg']
+		}
+	],
+	price: 275,
+	description: `The Air Jordan 5 hit shelves in 1990. It maintained the mesh side panels with its predecessor and took another bold step with its look—it included the first appearance of a translucent sole on a Jordan signature sneaker. Tinker Hatfield drew inspiration from World War II era fighter planes when he implemented the infamous “shark-teeth” look into the sneaker's design along the midsole. The AJ5 was first brought back in 2000, with great retro colorways arriving including the 'UNC,'  A Ma Maniére 'Dawn' and A Ma Maniére 'Dusk' releases.`,
+	sizes: [
+		{
+			color: 'University Blue/Black/White',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Deep Burgundy/Light Graphite/Metallic Silver',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Black/Racer Blue/Reflective Silver',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const NB2002R: IndProduct = {
+	id: 34,
+	brand: 'New Balance',
+	brandId: 5,
+	modelId: 1,
+	modelName: 'New Balance 2002R',
+	name: `New Balance 2002R Protection Shoes`,
+	releaseDate: '2023-10-26',
+	colors: [
+		{
+			color: 'Taupe/Angora/Silver Metallic',
+			images: ['https://nb.scene7.com/is/image/NB/m2002rcc_nb_02_i?$pdpflexf2$&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rcc_nb_05_i?$pdpflexf2$&qlt=80&fmt=webp&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rcc_nb_04_i?$pdpflexf2$&wid=440&hei=440']
+		},
+		{
+			color: 'Black/Phantom/Gunmetal',
+			images: ['https://nb.scene7.com/is/image/NB/m2002rbk_nb_02_i?$pdpflexf2$&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rbk_nb_05_i?$pdpflexf2$&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rbk_nb_04_i?$pdpflexf2$&wid=440&hei=440',]
+		},
+		{
+			color: 'Slate Grey/Raincloud/Black',
+			images: ['https://nb.scene7.com/is/image/NB/m2002rsg_nb_02_i?$pdpflexf2$&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rsg_nb_05_i?$pdpflexf2$&wid=440&hei=440',
+				'https://nb.scene7.com/is/image/NB/m2002rsg_nb_04_i?$pdpflexf2$&wid=440&hei=440']
+		}
+	],
+	price: 180,
+	description: `Launched in 2010, New Balance’s 2002R silhouette experienced a cultural rediscovery in the 2020s as “dad shoes” continued to exert influence across the footwear landscape.
+	 Rooted in performance running, the mixed-material upper comprises leather, suede and mesh, with an ABZORB midsole and N-ergy outsole underfoot. Discover the New Balance 2002R, featuring styles created in collaboration with Salehe Bembury, Joe Freshgoods, atmos, JJJJound and more.`,
+	sizes: [
+		{
+			color: 'Taupe/Angora/Silver Metallic',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Black/Phantom/Gunmetal',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Slate Grey/Raincloud/Black',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const NB530: IndProduct = {
+	id: 35,
+	brand: 'New Balance',
+	brandId: 5,
+	modelId: 2,
+	modelName: 'New Balance 530',
+	name: `New Balance 530 Shoes`,
+	releaseDate: '2022-04-15',
+	colors: [
+		{
+			color: 'Moonbeam/Sea Salt/White',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/265435/1.jpg']
+		},
+		{
+			color: 'White/Natural Indigo',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/223935/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/223935/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/223935/3.jpg']
+		},
+		{
+			color: 'Raincloud/Shadow Grey',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/370863/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/370863/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/370863/3.jpg']
+		},
+		{
+			color: 'Grey Matter/Harbor Grey',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/359290/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/359290/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/359290/3.jpg']
+		}
+	],
+	price: 160,
+	description: `The 530 men’s sneaker is a throwback of one of our classic running shoes. This casual kick combines everyday style with modern tech. ABZORB cushioning underfoot adds
+	 superior comfort. Put a retro spin on your step with the 530 men’s sneaker.`,
+	sizes: [
+		{
+			color: 'Moonbeam/Sea Salt/White',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'White/Natural Indigo',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Raincloud/Shadow Grey',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Grey Matter/Harbor Grey',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const NB5740: IndProduct = {
+	id: 36,
+	brand: 'New Balance',
+	brandId: 5,
+	modelId: 3,
+	modelName: 'New Balance 57/40',
+	name: `New Balance 57/40 Shoes`,
+	releaseDate: '2022-10-01',
+	colors: [
+		{
+			color: 'White/Sea Salt/Silver Metallic',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/356116/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/356116/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/356116/3.jpg']
+		},
+		{
+			color: 'Moonbeam/Sea Salt',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/291257/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/291257/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/291257/3.jpg']
+		}
+	],
+	price: 120,
+	description: `In 2021, New Balance debuted the 57/40, building on the iconic styling of the 574 silhouette. Exaggerated “N” logos and reflective accents adorn the suede uppers, with an undulating,
+		 stacked foam midsole incorporated as a nod to the brand’s ’90s heritage. From 'Au Lait' to 'Sea Salt,' explore a selection of New Balance 57/40 sneakers.`,
+	sizes: [
+		{
+			color: 'White/Sea Salt/Silver Metallic',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Moonbeam/Sea Salt',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
+
+const NB5740Bape: IndProduct = {
+	id: 37,
+	brand: 'New Balance',
+	brandId: 5,
+	modelId: 3,
+	modelName: 'New Balance 57/40',
+	name: `New Balance x BAPE 57/40 Shoes`,
+	releaseDate: '2022-07-30',
+	colors: [
+		{
+			color: 'Multi-Color/Multi-Color',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/324605/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/324605/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/324605/3.jpg']
+		},
+		{
+			color: 'Grey/White/Black',
+			images: ['https://cdn.flightclub.com/750/TEMPLATE/325862/1.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/325862/2.jpg',
+				'https://cdn.flightclub.com/750/TEMPLATE/325862/3.jpg']
+		}
+	],
+	price: 300,
+	description: `The BAPE x New Balance 57/40 is taken from the ‘Training Camp’ collection, featuring ‘pre-sport’ apparel and footwear intended to be worn on the way to the gym. This 
+		modern interpretation of the classic 574 silhouette features a mesh upper with black suede overlays and an oversized ‘N’ logo in a camo print. ‘A BATHING APE’ is inscribed on the
+		 lateral heel of the left shoe, while an Ape Head graphic adorns the right. Crimson shark tooth detailing on the heel tab delivers an unexpected pop of color. The lifestyle runner is mounted on a stacked EVA midsole that offers lightweight cushioning with each step.`,
+	sizes: [
+		{
+			color: 'Multi-Color/Multi-Color',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		},
+		{
+			color: 'Grey/White/Black',
+			sizes: [
+				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 5.0', amount: 5 },
+				{ size: 'M 5.5', amount: 5 },
+				{ size: 'M 6.0', amount: 5 },
+				{ size: 'M 6.5', amount: 5 },
+				{ size: 'M 7.0', amount: 5 },
+				{ size: 'M 7.5', amount: 5 },
+				{ size: 'M 8.0', amount: 5 },
+				{ size: 'M 8.5', amount: 5 },
+				{ size: 'M 9.0', amount: 5 },
+				{ size: 'M 9.5', amount: 5 },
+				{ size: 'M 10.0', amount: 5 },
+				{ size: 'M 10.5', amount: 5 },
+				{ size: 'M 11.0', amount: 5 },
+				{ size: 'M 11.5', amount: 5 },
+				{ size: 'M 12.0', amount: 5 },
+				{ size: 'M 12.5', amount: 5 },
+				{ size: 'M 13.0', amount: 5 },
+				{ size: 'M 14.0', amount: 5 },
+				{ size: 'M 15.0', amount: 5 },
+				{ size: 'M 16.0', amount: 5 },
+				{ size: 'M 17.0', amount: 5 },
+				{ size: 'M 18.0', amount: 5 }
+			]
+		}
+	]
+}
