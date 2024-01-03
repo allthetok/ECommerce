@@ -290,7 +290,6 @@ const yeezy500 = [
 			'https://stayfresh.ca/cdn/shop/products/SF_Adidas_Yeezy_500_Utility_Black_F36640-1_600x.jpg?v=1571278055',
 			'https://stayfresh.ca/cdn/shop/products/SF_Adidas_Yeezy_500_Utility_Black_F36640-4_600x.jpg?v=1571278055',
 			'https://stayfresh.ca/cdn/shop/products/adidasYeezy500BoneWhiteFV3573-1_600x.jpg?v=1610674749',
-			'https://stayfresh.ca/cdn/shop/products/adidasYeezy500BoneWhiteFV3573-1_600x.jpg?v=1610674749',
 			'https://stayfresh.ca/cdn/shop/products/adidasYeezy500BoneWhiteFV3573-4_600x.jpg?v=1610674761'
 		],
 		price: 200,
@@ -334,7 +333,7 @@ const yeezy500 = [
 	},
 ]
 
-const yeezy750 = [
+const yeezy700 = [
 	{
 		id: 15,
 		brand: 'Yeezy',
@@ -399,9 +398,9 @@ const yeezyOpen = [
 		name: 'Yeezy Slides',
 		releaseDate: '2022-03-07',
 		colors: [
-			'Onyx/Onyx/Onyx',
-			'Granite/Granite/Granite',
-			'Bone/Bone/Bone'
+			'Slate Grey/Slate Grey/ Slate Grey',
+			'Pure/Pure/Pure',
+			'Azure/Azure/Azure'
 		],
 		images: [
 			'https://stayfresh.ca/cdn/shop/files/adidas-yeezy-slides-slate-grey-ID2350-release-date-4_600x.jpg?v=1692392595',
@@ -425,8 +424,8 @@ const yeezyOpen = [
 		releaseDate: '2022-04-16',
 		colors: [
 			'Slate Grey/Slate Grey/ Slate Grey',
-			'Pure/Pure/Pure',
-			'Azure/Azure/Azure'
+			'Granite/Granite/Granite',
+			'Bone/Bone/Bone'
 		],
 		images: [
 			'https://stayfresh.ca/cdn/shop/products/ezgif.com-gif-maker_32_600x.jpg?v=1654716126',
@@ -902,4 +901,4 @@ const sizes = [
 	'M 18.0',
 ]
 
-export { ultraBoost, superStar, stanSmith, yeezy350, yeezy500, yeezy750, yeezyOpen, nikeAF1, nikeAirM97, nikeDunk, nikeBlazer, NMD, AJ1, AJ4, AJ5, NB2002R, NB530, NB5740, sizes }
+export { ultraBoost, superStar, stanSmith, yeezy350, yeezy500, yeezy700, yeezyOpen, nikeAF1, nikeAirM97, nikeDunk, nikeBlazer, NMD, AJ1, AJ4, AJ5, NB2002R, NB530, NB5740, sizes }
