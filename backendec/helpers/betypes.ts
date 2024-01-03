@@ -4,6 +4,7 @@ interface IndProduct {
 	brandId: number,
 	modelId: number,
 	modelName: string,
+	name: string,
 	releaseDate: Date | string,
 	colors: Colors[],
 	price: number,
