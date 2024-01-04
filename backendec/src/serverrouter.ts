@@ -5,6 +5,7 @@ require('dotenv').config()
 import express from 'express'
 import cors from 'cors'
 import { router as populateRouter } from '../routes/populateRouter'
+import { router as productRouter } from '../routes/productRouter'
 
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(requestLogger)
 app.use(cors(corsOptions))
 app.use('/api/populate', populateRouter)
+app.use('/api/shoes', productRouter)
 
 const PORT = process.env.API_PORT || 3002
 
