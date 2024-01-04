@@ -4,6 +4,7 @@
 require('dotenv').config()
 import express, { NextFunction, Request, Response } from 'express'
 import axios from 'axios'
+import { brandMap, modelMap, productMap } from '../helpers/enumMap'
 const router = express.Router()
 
 router.post('/brands', async (request: Request, response: Response) => {
@@ -15,33 +16,58 @@ router.post('/brands', async (request: Request, response: Response) => {
 		})
 	}
 
-	if 
-
-
-	const searchTerm: string = body.searchTerm
-	const limit: number = body.limit
-	// const productsObj: any
-
-	const productsObj: any = sneaks.getProducts(searchTerm, 5, async (err: any, products: any) => {
-		// console.log(products)
-		console.log(products)
-		// productsObj = products[0]
-		// productsObj = products
-		return products
+	if (brandReq === '' || brandReq === 'all') {
+		// allBrands: [
+		// 	brandMap.get('Adidas'),
+		// 	brandMap.get('Yeezy'),
+		// 	brandMap.get('Nike'),
+		// 	brandMap.get('Air Jordan'),
+		// 	brandMap.get('New Balance')
+		// ]
+		return response.status(200).json({
+			allBrands: [
+				...brandMap.values()
+			]
+		})
+	}
+	return response.status(200).json({
+		brandReq: brandMap.get(brandReq)
 	})
-	console.log(productsObj)
-
-	// const productsObj = retrieveProducts(searchTerm, limit)
-	// console.log(productsObj)
-	return response.status(200).json(productsObj)
-
 })
 
-const retrieveProducts = (searchTerm: string, limit: number) => {
-	const theProducts = sneaks.getProducts(searchTerm, limit, (err: any, products: any) => {
-		return products
+router.post('/models', async (request: Request, response: Response) => {
+	const body = request.body
+	const modelReq: string = body.model
+	if (!modelReq || modelReq === null || modelReq === undefined) {
+		return response.status(404).json({
+			message: `No model specified: ${modelReq}`
+		})
+	}
+
+	if (modelReq === '' || modelReq === 'all') {
+		return response.status(200).json({
+			allModels: [
+				...modelMap.values()
+			]
+		})
+	}
+	return response.status(200).json({
+		modelReq: modelMap.get(modelReq)
 	})
-	return theProducts
-}
+})
+
+router.post('/product', async (request: Request, response: Response) => {
+	const body = request.body
+	const productReq: string = body.product
+	if (!productReq || productReq === null || productReq === undefined || productReq === '') {
+		return response.status(404).json({
+			message: `No product specified: ${productReq}`
+		})
+	}
+	return response.status(200).json({
+		productReq: productMap.get(productReq)
+	})
+})
+
 
 export { router }

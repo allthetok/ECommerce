@@ -71,4 +71,4 @@ const productMap = new Map<string, IndProduct>([
 	[`New Balance x BAPE 57/40 Shoes`, NewBalance.allModels[2].allProducts[1]]
 ])
 
-export { brandMap, modelMap }
+export { brandMap, modelMap, productMap }
