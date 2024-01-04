@@ -15,6 +15,8 @@ router.post('/brands', async (request: Request, response: Response) => {
 		})
 	}
 
+	if 
+
 
 	const searchTerm: string = body.searchTerm
 	const limit: number = body.limit

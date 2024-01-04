@@ -30,7 +30,7 @@ interface ColorSizes {
 interface Brands {
 	id: number,
 	name: string,
-	allProducts: Models[]
+	allModels: Models[]
 }
 
 interface Models {

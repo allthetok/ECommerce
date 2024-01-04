@@ -1023,7 +1023,7 @@ const Yeezy500Base: IndProduct = {
 	brand: 'Yeezy',
 	brandId: 2,
 	modelId: 2,
-	modelName: 'Yeezy 500',
+	modelName: 'Yeezy Boost 500',
 	name: 'Yeezy Boost 500',
 	releaseDate: '2018-07-07',
 	colors: [
@@ -1107,12 +1107,12 @@ const Yeezy500Boot: IndProduct = {
 	brand: 'Yeezy',
 	brandId: 2,
 	modelId: 2,
-	modelName: 'Yeezy 500',
+	modelName: 'Yeezy Boost 500',
 	name: 'Yeezy Boost 500 High Boot',
 	releaseDate: '2023-08-14',
 	colors: [
 		{
-			color: 			'Tyrian/Tyrian/Tyrian',
+			color: 	'Tyrian/Tyrian/Tyrian',
 			images: ['https://stayfresh.ca/cdn/shop/products/FY4269_600x.jpg?v=1591403009']
 		}
 	],
@@ -1122,7 +1122,7 @@ const Yeezy500Boot: IndProduct = {
 		The boot’s extended padded collar reaches up to the calf for optimal fit.`,
 	sizes: [
 		{
-			color: 			'Tyrian/Tyrian/Tyrian',
+			color: 	'Tyrian/Tyrian/Tyrian',
 			sizes: [
 				{ size: 'M 4.5', amount: 5 },
 				{ size: 'M 5.0', amount: 5 },
@@ -1157,7 +1157,7 @@ const Yeezy500High: IndProduct = {
 	brand: 'Yeezy',
 	brandId: 2,
 	modelId: 2,
-	modelName: 'Yeezy 500',
+	modelName: 'Yeezy Boost 500',
 	name: 'Yeezy Boost 500 High',
 	releaseDate: '2019-12-16',
 	colors: [
@@ -1589,7 +1589,6 @@ const YeezySlides: IndProduct = {
 		}
 	]
 }
-
 
 const NikeAF1Base: IndProduct = {
 	id: 20,
@@ -2024,7 +2023,7 @@ const NikeBlazerMid: IndProduct = {
 	brandId: 3,
 	modelId: 4,
 	modelName: 'Nike Blazer',
-	name: `Nike Mid '77 Vintage`,
+	name: `Nike Blazer Mid '77 Vintage`,
 	releaseDate: '2020-09-18',
 	colors: [
 		{
@@ -3359,7 +3358,7 @@ const NB5740: Models = {
 const Adidas: Brands = {
 	id: 1,
 	name: 'Adidas',
-	allProducts: [
+	allModels: [
 		ultraBoost,
 		superStar,
 		stanSmith,
@@ -3370,7 +3369,7 @@ const Adidas: Brands = {
 const Yeezy: Brands = {
 	id: 2,
 	name: 'Yeezy',
-	allProducts: [
+	allModels: [
 		Yeezy350,
 		Yeezy500,
 		Yeezy700,
@@ -3381,7 +3380,7 @@ const Yeezy: Brands = {
 const Nike: Brands = {
 	id: 3,
 	name: 'Nike',
-	allProducts: [
+	allModels: [
 		NikeAF1,
 		NikeAirMax97,
 		NikeDunk,
@@ -3392,7 +3391,7 @@ const Nike: Brands = {
 const AirJordan: Brands = {
 	id: 4,
 	name: 'Air Jordan',
-	allProducts: [
+	allModels: [
 		AJ1,
 		AJ4,
 		AJ5
@@ -3402,7 +3401,7 @@ const AirJordan: Brands = {
 const NewBalance: Brands = {
 	id: 5,
 	name: 'New Balance',
-	allProducts: [
+	allModels: [
 		NB2002R,
 		NB530,
 		NB5740
