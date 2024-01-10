@@ -16,7 +16,7 @@ const ultraBoostLight: IndProduct = {
 			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9fc33404c64d4b8db52af275add6b62e_9366/Ultraboost_Light_Shoes_White_IE1768_01_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/912e92ce71c54aea9392c5675fc6cd33_9366/Ultraboost_Light_Shoes_White_IE1768_02_standard_hover.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2174c34dbfd642419e986969823bdaab_9366/Ultraboost_Light_Shoes_White_IE1768_03_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f97d22f5b3af403ab63a5ba083e9edef_9366/Ultraboost_Light_Shoes_White_GY9350_HM3_hover.jpg']
+			]
 		},
 		{
 			color: 'Dark Blue/Cream White/Core Black',
@@ -33,7 +33,7 @@ const ultraBoostLight: IndProduct = {
 		{
 			color: 'Cloud White/Arctic Night/Lucid Lemon',
 			sizes: [
-				{ size: 'M 4.5', amount: 5 },
+				{ size: 'M 4.5', amount: 0 },
 				{ size: 'M 5.0', amount: 5 },
 				{ size: 'M 5.5', amount: 5 },
 				{ size: 'M 6.0', amount: 5 },
@@ -3408,9 +3408,30 @@ const NewBalance: Brands = {
 	]
 }
 
+const fullBrands: Brands[] = [
+	Adidas,
+	Yeezy,
+	Nike,
+	AirJordan,
+	NewBalance
+]
+
+// const fullModels = {
+// 	allModels: [
+// 		ultraBoost,
+// 		superStar,
+// 		stanSmith,
+// 		NMD,
+// 		Yeezy350,
+// 		Yeezy500,
+// 		Yeezy700,
+// 		YeezyOpen
+// 	]
+// }
+
 export { ultraBoostLight, ultraBoost1, ultraBoost22, ultraBoost4, superStarOriginal, superStarGore, stanSmithOriginal, stanSmithBape, NMDR1, NMDR2, Yeezy350Base, Yeezy500Base, Yeezy500Boot,
 	Yeezy500High, Yeezy700V2, Yeezy700V3, Yeezy700HiRes, YeezyFoamRnr, YeezySlides, NikeAF1Base, NikeAF1LV8, NikeAirMax97Base, NikeDunkHigh, NikeDunkLow, NikeBlazerMid, NikeBlazerLow,
 	NikeBlazerOW, AJ1Low, AJ1Mid, AJ1High, AJ4CJ, AJ4Base, AJ5Base, NB2002RBase, NB530Base, NB5740Base, NB5740Bape,
 	ultraBoost, superStar, stanSmith, NMD, Yeezy350, Yeezy500, Yeezy700, YeezyOpen, NikeAF1, NikeAirMax97, NikeDunk, NikeBlazer, AJ1, AJ4, AJ5, NB2002R, NB530, NB5740,
-	Adidas, Yeezy, Nike, AirJordan, NewBalance }
+	Adidas, Yeezy, Nike, AirJordan, NewBalance, fullBrands }
 

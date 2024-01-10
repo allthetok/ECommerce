@@ -4,7 +4,9 @@
 require('dotenv').config()
 import express, { NextFunction, Request, Response } from 'express'
 import axios from 'axios'
+import { Brands, IndProduct } from '../helpers/betypes'
 import { brandMap, modelMap, productMap } from '../helpers/enumMap'
+import { fullBrands } from '../mockproduct/db'
 const router = express.Router()
 
 router.post('/brands', async (request: Request, response: Response) => {
@@ -64,8 +66,13 @@ router.post('/product', async (request: Request, response: Response) => {
 			message: `No product specified: ${productReq}`
 		})
 	}
+	const productMapped = productMap.get(productReq)
+	// const similarProducts: any[] = fullBrands.filter((indBrand: Brands) => productMapped.brand === indBrand.name)
+	const similarProducts = modelMap.get(productMapped.modelName).allProducts.filter((indProduct: IndProduct) => indProduct.id !== productMapped.id)
+
 	return response.status(200).json({
-		productReq: productMap.get(productReq)
+		productReq: productMapped,
+		similarProducts: similarProducts
 	})
 })
 
