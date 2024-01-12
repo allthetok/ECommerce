@@ -9,7 +9,7 @@ import { brandMap, modelMap, productMap } from '../helpers/enumMap'
 import { fullBrands } from '../mockproduct/db'
 const router = express.Router()
 
-router.post('/brands', async (request: Request, response: Response) => {
+router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
 	const brandReq: string = body.brand
 	if (!brandReq || brandReq === null || brandReq === undefined) {
@@ -37,7 +37,7 @@ router.post('/brands', async (request: Request, response: Response) => {
 	})
 })
 
-router.post('/models', async (request: Request, response: Response) => {
+router.post('/model', async (request: Request, response: Response) => {
 	const body = request.body
 	const modelReq: string = body.model
 	if (!modelReq || modelReq === null || modelReq === undefined) {
