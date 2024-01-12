@@ -106,10 +106,10 @@ const ultraBoost1: IndProduct = {
 		},
 		{
 			color: 'Grey Three/Grey Five/Core Black',
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3f93892573de4e0485d9af160004127c_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_03_standard.jpg',
+			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/60f94aa4ca62471eaa39af1600038cc2_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_01_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3f93892573de4e0485d9af160004127c_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_03_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/1f8ec76490c048ac89a2af1600044d8b_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_02_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8b844830395c4f88bf16af1600036906_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_012_hover_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/60f94aa4ca62471eaa39af1600038cc2_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_01_standard.jpg']
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8b844830395c4f88bf16af1600036906_9366/Ultraboost_1.0_Shoes_Grey_HQ4200_012_hover_standard.jpg']
 		}
 	],
 	price: 260,
@@ -187,15 +187,16 @@ const ultraBoost22: IndProduct = {
 	colors: [
 		{
 			color: 'Core Black / Core Black / Core Black',
-			images: ['https://assets.adidas.com/images/w_840,f_auto,q_auto/2ca56ffeb5554f9dad08af70010d84c3_9366/Ultraboost_22_Shoes_Black_HQ8593_01_standard.jpg',
+			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec6_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2cf5e0fd2e184d26b746ad7800abed79_9366/Ultraboost_22_Shoes_Black_GZ0127_04_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/659a5eb44a8747c397dbad7800abe68f_9366/Ultraboost_22_Shoes_Black_GZ0127_03_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/5ae921bb08034aa2803fad7800abdd7f_9366/Ultraboost_22_Shoes_Black_GZ0127_02_standard_hover.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec6_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg']
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/5ae921bb08034aa2803fad7800abdd7f_9366/Ultraboost_22_Shoes_Black_GZ0127_02_standard_hover.jpg']
 		},
 		{
 			color: 'Core Black / Core Black / Lucid Blue S23',
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7cca464eddf84df9a26aaf70010f1476_9366/Ultraboost_22_Shoes_Black_HQ8593_04_standard.jpg',
+			images: [
+				'https://assets.adidas.com/images/w_840,f_auto,q_auto/2ca56ffeb5554f9dad08af70010d84c3_9366/Ultraboost_22_Shoes_Black_HQ8593_01_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7cca464eddf84df9a26aaf70010f1476_9366/Ultraboost_22_Shoes_Black_HQ8593_04_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/51c83ccaf9bc41278ae7af70010dfcad_9366/Ultraboost_22_Shoes_Black_HQ8593_03_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c8379919489d477eb087af70010e375f_9366/Ultraboost_22_Shoes_Black_HQ8593_02_standard_hover.jpg']
 		}
@@ -275,16 +276,17 @@ const ultraBoost4: IndProduct = {
 	colors: [
 		{
 			color: 'Core Black / Core Black / Active Red',
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b56f062b132c400ab494ac67011578a5_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_01_standard.jpg',
+			images: [
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/584670fb39cd4f1aa70fac5500914ec4_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_01_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8c1fa86309c94e6594beac55009169ab_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_04_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8906fe0c2b3b48af9486ac55009162ba_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_03_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4df6a4c2c1a6459eb8a1ac5500915c8e_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_02_standard_hover.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/584670fb39cd4f1aa70fac5500914ec4_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_01_standard.jpg']
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4df6a4c2c1a6459eb8a1ac5500915c8e_9366/Ultraboost_4.0_DNA_Shoes_Black_FY9121_02_standard_hover.jpg']
 		},
 		{
 			color: 'Cloud White / Cloud White / Core Black'
 			,
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/deaea76b47ee49cc9e3aac6701158cef_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_03_standard.jpg',
+			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b56f062b132c400ab494ac67011578a5_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_01_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/deaea76b47ee49cc9e3aac6701158cef_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_03_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e465482f3bc548858192ac670115932a_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_04_standard.jpg',
 				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6b6042e962b046d6a597ac670115868f_9366/Ultraboost_4.0_DNA_Shoes_White_FY9120_02_standard_hover.jpg']
 		}

@@ -67,7 +67,6 @@ router.post('/product', async (request: Request, response: Response) => {
 		})
 	}
 	const productMapped = productMap.get(productReq)
-	// const similarProducts: any[] = fullBrands.filter((indBrand: Brands) => productMapped.brand === indBrand.name)
 	const similarProducts = modelMap.get(productMapped.modelName).allProducts.filter((indProduct: IndProduct) => indProduct.id !== productMapped.id)
 
 	return response.status(200).json({
