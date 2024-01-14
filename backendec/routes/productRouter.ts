@@ -11,30 +11,34 @@ const router = express.Router()
 
 router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
-	const brandReq: string = body.brand
-	if (!brandReq || brandReq === null || brandReq === undefined) {
+	const brandReq: string[] = body.brand
+	if (!brandReq || brandReq === null || brandReq === undefined || brandReq.length === 0) {
 		return response.status(404).json({
 			message: `No brand specified: ${brandReq}`
 		})
 	}
+	const resultBrandObj: Brands[] = []
 
-	if (brandReq === '' || brandReq === 'all') {
-		// allBrands: [
-		// 	brandMap.get('Adidas'),
-		// 	brandMap.get('Yeezy'),
-		// 	brandMap.get('Nike'),
-		// 	brandMap.get('Air Jordan'),
-		// 	brandMap.get('New Balance')
-		// ]
-		return response.status(200).json({
-			allBrands: [
-				...brandMap.values()
-			]
-		})
+	if (brandReq.length === 1 && (brandReq.join('') === 'all' || brandReq.join('') === '')) {
+		for (const val of brandMap.values()) {
+			resultBrandObj.push(val)
+		}
 	}
+
+	else {
+		for (let i = 0; i < brandReq.length; i ++) {
+			resultBrandObj.push(brandMap.get(brandReq[i]))
+		}
+	}
+
 	return response.status(200).json({
-		brandReq: brandMap.get(brandReq)
+		brandReq: resultBrandObj
 	})
+
+
+	// return response.status(200).json({
+	// 	brandReq: brandMap.get(brandReq)
+	// })
 })
 
 router.post('/model', async (request: Request, response: Response) => {

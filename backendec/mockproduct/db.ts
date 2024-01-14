@@ -366,15 +366,15 @@ const superStarOriginal: IndProduct = {
 	colors: [
 		{
 			color: 'Cloud White / Core Black / Cloud White',
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3708ab90979a4ba59535aad6009a2fa8_9366/Superstar_Shoes_White_EG4958_03_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8a358bcd5e3d453da815aad6009a249e_9366/Superstar_Shoes_White_EG4958_02_standard_hover.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg',]
+			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3708ab90979a4ba59535aad6009a2fa8_9366/Superstar_Shoes_White_EG4958_03_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8a358bcd5e3d453da815aad6009a249e_9366/Superstar_Shoes_White_EG4958_02_standard_hover.jpg']
 		},
 		{
 			color: 'Core Black / Cloud White / Core Black',
-			images: ['https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4bc064f2ff6c4d848308aad801165d86_9366/Superstar_Shoes_Black_EG4957_04_standard.jpg',
-				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb33bd67c8c64ebd96f8aad801164853_9366/Superstar_Shoes_Black_EG4957_02_standard_hover.jpg',
-				'https://assets.adidas.com/images/w_840,f_auto,q_auto/af405adab99747708f01aad8011626ff_9366/Superstar_Shoes_Black_EG4957_01_standard.jpg']
+			images: ['https://assets.adidas.com/images/w_840,f_auto,q_auto/af405adab99747708f01aad8011626ff_9366/Superstar_Shoes_Black_EG4957_01_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4bc064f2ff6c4d848308aad801165d86_9366/Superstar_Shoes_Black_EG4957_04_standard.jpg',
+				'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb33bd67c8c64ebd96f8aad801164853_9366/Superstar_Shoes_Black_EG4957_02_standard_hover.jpg',]
 		},
 		{
 			color: 'Cloud White / Collegiate Green / Cloud White',
