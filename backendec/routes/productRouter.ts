@@ -44,19 +44,19 @@ router.post('/brand', async (request: Request, response: Response) => {
 router.post('/model', async (request: Request, response: Response) => {
 	const body = request.body
 	const modelReq: string = body.model
-	if (!modelReq || modelReq === null || modelReq === undefined) {
+	if (!modelReq || modelReq === null || modelReq === undefined || modelReq.length === 0) {
 		return response.status(404).json({
 			message: `No model specified: ${modelReq}`
 		})
 	}
 
-	if (modelReq === '' || modelReq === 'all') {
-		return response.status(200).json({
-			allModels: [
-				...modelMap.values()
-			]
-		})
-	}
+	// if (modelReq === '' || modelReq === 'all') {
+	// 	return response.status(200).json({
+	// 		allModels: [
+	// 			...modelMap.values()
+	// 		]
+	// 	})
+	// }
 	return response.status(200).json({
 		modelReq: modelMap.get(modelReq)
 	})

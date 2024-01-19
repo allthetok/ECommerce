@@ -1262,7 +1262,7 @@ const Yeezy700V3: IndProduct = {
 	brandId: 2,
 	modelId: 3,
 	modelName: 'Yeezy Boost 700',
-	name: 'Yeezy 700 V3 Fade Carbon',
+	name: 'Yeezy Boost 700 V3 Fade Carbon',
 	releaseDate: '2022-05-21',
 	colors: [
 		{
@@ -3205,7 +3205,7 @@ const NMD: Models = {
 
 const Yeezy350: Models = {
 	id: 1,
-	name: 'Yeezy 350',
+	name: 'Yeezy Boost 350',
 	brandId: 2,
 	brand: 'Yeezy',
 	allProducts: [
@@ -3215,7 +3215,7 @@ const Yeezy350: Models = {
 
 const Yeezy500: Models = {
 	id: 2,
-	name: 'Yeezy 500',
+	name: 'Yeezy Boost 500',
 	brandId: 2,
 	brand: 'Yeezy',
 	allProducts: [
@@ -3227,7 +3227,7 @@ const Yeezy500: Models = {
 
 const Yeezy700: Models = {
 	id: 3,
-	name: 'Yeezy 500',
+	name: 'Yeezy Boost 700',
 	brandId: 2,
 	brand: 'Yeezy',
 	allProducts: [
