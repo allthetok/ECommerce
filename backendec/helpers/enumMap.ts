@@ -18,7 +18,7 @@ const modelMap = new Map<string, Models>([
 	['Yeezy Boost 350', Yeezy.allModels[0]],
 	['Yeezy Boost 500', Yeezy.allModels[1]],
 	['Yeezy Boost 700', Yeezy.allModels[2]],
-	['Yeezy Foam Runner | Yeezy Slides', Yeezy.allModels[3]],
+	['Yeezy Foam Runner - Yeezy Slides', Yeezy.allModels[3]],
 	['Nike Air Force 1', Nike.allModels[0]],
 	['Nike Air Max 97', Nike.allModels[1]],
 	['Nike Dunk', Nike.allModels[2]],
@@ -28,7 +28,7 @@ const modelMap = new Map<string, Models>([
 	['Air Jordan 5', AirJordan.allModels[2]],
 	['New Balance 2002R', NewBalance.allModels[0]],
 	['New Balance 530', NewBalance.allModels[1]],
-	['New Balance 57/40', NewBalance.allModels[2]]
+	['New Balance 5740', NewBalance.allModels[2]]
 ])
 
 const productMap = new Map<string, IndProduct>([
@@ -67,8 +67,8 @@ const productMap = new Map<string, IndProduct>([
 	[`Air Jordan 5 Retro Shoes`, AirJordan.allModels[2].allProducts[0]],
 	[`New Balance 2002R Protection Shoes`, NewBalance.allModels[0].allProducts[0]],
 	[`New Balance 530 Shoes`, NewBalance.allModels[1].allProducts[0]],
-	[`New Balance 57/40 Shoes`, NewBalance.allModels[2].allProducts[0]],
-	[`New Balance x BAPE 57/40 Shoes`, NewBalance.allModels[2].allProducts[1]]
+	[`New Balance 5740 Shoes`, NewBalance.allModels[2].allProducts[0]],
+	[`New Balance x BAPE 5740 Shoes`, NewBalance.allModels[2].allProducts[1]]
 ])
 
 export { brandMap, modelMap, productMap }

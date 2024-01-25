@@ -1394,7 +1394,7 @@ const YeezyFoamRnr: IndProduct = {
 	brand: 'Yeezy',
 	brandId: 2,
 	modelId: 4,
-	modelName: 'Yeezy Foam Runner | Yeezy Slides',
+	modelName: 'Yeezy Foam Runner - Yeezy Slides',
 	name: 'Yeezy Foam Runner',
 	releaseDate: '2022-04-16',
 	colors: [
@@ -1479,7 +1479,7 @@ const YeezySlides: IndProduct = {
 	brand: 'Yeezy',
 	brandId: 2,
 	modelId: 4,
-	modelName: 'Yeezy Foam Runner | Yeezy Slides',
+	modelName: 'Yeezy Foam Runner - Yeezy Slides',
 	name: 'Yeezy Slides',
 	releaseDate: '2022-03-07',
 	colors: [
@@ -2990,8 +2990,8 @@ const NB5740Base: IndProduct = {
 	brand: 'New Balance',
 	brandId: 5,
 	modelId: 3,
-	modelName: 'New Balance 57/40',
-	name: `New Balance 57/40 Shoes`,
+	modelName: 'New Balance 5740',
+	name: `New Balance 5740 Shoes`,
 	releaseDate: '2022-10-01',
 	colors: [
 		{
@@ -3075,8 +3075,8 @@ const NB5740Bape: IndProduct = {
 	brand: 'New Balance',
 	brandId: 5,
 	modelId: 3,
-	modelName: 'New Balance 57/40',
-	name: `New Balance x BAPE 57/40 Shoes`,
+	modelName: 'New Balance 5740',
+	name: `New Balance x BAPE 5740 Shoes`,
 	releaseDate: '2022-07-30',
 	colors: [
 		{
@@ -3239,7 +3239,7 @@ const Yeezy700: Models = {
 
 const YeezyOpen: Models = {
 	id: 4,
-	name: 'Yeezy Foam Runner | Yeezy Slides',
+	name: 'Yeezy Foam Runner - Yeezy Slides',
 	brandId: 2,
 	brand: 'Yeezy',
 	allProducts: [
@@ -3347,7 +3347,7 @@ const NB530: Models = {
 
 const NB5740: Models = {
 	id: 3,
-	name: 'New Balance 57/40',
+	name: 'New Balance 5740',
 	brandId: 5,
 	brand: 'New Balance',
 	allProducts: [
