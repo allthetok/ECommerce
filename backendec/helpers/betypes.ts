@@ -41,4 +41,4 @@ interface Models {
 	allProducts: IndProduct[]
 }
 
-export { type IndProduct, type Brands, type Models }
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes }

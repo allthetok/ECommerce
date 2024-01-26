@@ -61,6 +61,8 @@ router.get('/createProduct', async (request: Request, response: Response) => {
 			  modelId INT NOT NULL,
 			  name VARCHAR(200) UNIQUE NOT NULL,
 			  releaseDate DATE NOT NULL,
+			  price INT NOT NULL,
+			  description VARCHAR(2500),
 			  colors JSON[] DEFAULT '{}',
 			  CONSTRAINT FOREIGN_BRAND FOREIGN KEY(brandId) REFERENCES brands(id),
 			  CONSTRAINT FOREIGN_MODEL FOREIGN KEY(modelId) REFERENCES models(id)
