@@ -38,7 +38,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		INSERT INTO brands (name)
 		VALUES (${brand})
-		RETURNING id, brand`)
+		RETURNING id, name`)
 		.then((response: any) => {
 			console.log(response.rows[0])
 			brandQueryResult = response.rows[0]
@@ -74,7 +74,7 @@ router.post('/model', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		SELECT b.id, b.name 
 			FROM brands b 
-			WHERE b.id = ${brandId})`)
+			WHERE b.id = ${brandId} `)
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				brandExists = !brandExists
@@ -152,7 +152,7 @@ router.post('/product', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		SELECT b.id, b.name 
 			FROM brands b 
-			WHERE b.id = ${brandId})`)
+			WHERE b.id = ${brandId}`)
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				brandExists = !brandExists
@@ -168,7 +168,7 @@ router.post('/product', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		SELECT m.id, m.name 
 			FROM models m 
-			WHERE m.id = ${modelId})`)
+			WHERE m.id = ${modelId}`)
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				modelExists = !modelExists
@@ -199,11 +199,11 @@ router.post('/product', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		WITH new_product AS (
 			INSERT INTO products (name, brandId, modelId, releaseDate, price, description, colors)
-			VALUES (${product}, ${brandQueryResult.id}, ${modelQueryResult.id}, to_date(${releaseDate}), ${price}, ${description}, ${colors})
-			RETURNING id, brandId, modelId, name, releaseDate, price, description, colors, ${sizes} as colorSizes
+			VALUES (${product}, ${brandQueryResult.id}, ${modelQueryResult.id}, ${releaseDate}, ${price}, ${description}, ${colors})
+			RETURNING id, brandId, modelId, name, releaseDate, price, description, colors
 		),
 		new_sizes AS (   
-			INSERT INTO sizes (id, colSize) SELECT id, colorSizes FROM new_product RETURNING colSize
+			INSERT INTO sizes (id, colSize) VALUES ((SELECT id FROM new_product), ${sizes}) RETURNING colSize
 		)
 		SELECT np.id, ${brandQueryResult.name} AS brand, np.brandId, np.modelId, ${modelQueryResult.name} AS modelName, np.name, np.releaseDate, np.price, np.description, np.colors, ns.colSize AS sizes
 		FROM new_product np, new_sizes ns;`)
