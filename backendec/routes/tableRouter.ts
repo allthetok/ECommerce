@@ -25,7 +25,7 @@ router.get('/createBrand', async (request: Request, response: Response) => {
 		.catch((err: any) => {
 			console.log(err)
 			return response.status(500).json({
-				error: 'Unable to create table: users'
+				error: 'Unable to create table: brands'
 			})
 		})
 })
@@ -48,21 +48,59 @@ router.get('/createModel', async (request: Request, response: Response) => {
 		.catch((err: any) => {
 			console.log(err)
 			return response.status(500).json({
-				error: 'Unable to create table: users'
+				error: 'Unable to create table: models'
 			})
 		})
 })
 
 router.get('/createProduct', async (request: Request, response: Response) => {
-	return response.status(200).json({
-		Message: 'Successfully created products table'
-	})
+	await pool.query(SQL`
+		CREATE TABLE products
+			( id SERIAL PRIMARY KEY,
+			  brandId INT NOT NULL,
+			  modelId INT NOT NULL,
+			  name VARCHAR(200) UNIQUE NOT NULL,
+			  releaseDate DATE NOT NULL,
+			  colors JSON[] DEFAULT '{}'
+			  CONSTRAINT FOREIGN_BRAND FOREIGN KEY(brandId) REFERENCES brands(id)
+			  CONSTRAINT FOREIGN_MODEL FOREIGN KEY(modelId) REFERENCES models(id)
+			)
+		`)
+		.then(() => {
+			console.log(pool.query)
+			return response.status(200).json({
+				Message: 'Successfully created table: products'
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: 'Unable to create table: products'
+			})
+		})
 })
 
-router.get('/createSizes', async (request: Request, response: Response) => {
-	return response.status(200).json({
-		Message: 'Successfully created products table'
-	})
+
+router.get('/createSize', async (request: Request, response: Response) => {
+	await pool.query(SQL`
+		CREATE TABLE sizes
+			( id INT PRIMARY KEY NOT NULL,
+			  colSize JSON[] DEFAULT '{}'
+			  CONSTRAINT FOREIGN_PRODUCT FOREIGN KEY(id) REFERENCES products(id)
+			)
+		`)
+		.then(() => {
+			console.log(pool.query)
+			return response.status(200).json({
+				Message: 'Successfully created table: sizes'
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: 'Unable to create table: sizes'
+			})
+		})
 })
 
 
