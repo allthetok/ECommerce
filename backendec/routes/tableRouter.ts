@@ -61,8 +61,8 @@ router.get('/createProduct', async (request: Request, response: Response) => {
 			  modelId INT NOT NULL,
 			  name VARCHAR(200) UNIQUE NOT NULL,
 			  releaseDate DATE NOT NULL,
-			  colors JSON[] DEFAULT '{}'
-			  CONSTRAINT FOREIGN_BRAND FOREIGN KEY(brandId) REFERENCES brands(id)
+			  colors JSON[] DEFAULT '{}',
+			  CONSTRAINT FOREIGN_BRAND FOREIGN KEY(brandId) REFERENCES brands(id),
 			  CONSTRAINT FOREIGN_MODEL FOREIGN KEY(modelId) REFERENCES models(id)
 			)
 		`)
@@ -85,7 +85,7 @@ router.get('/createSize', async (request: Request, response: Response) => {
 	await pool.query(SQL`
 		CREATE TABLE sizes
 			( id INT PRIMARY KEY NOT NULL,
-			  colSize JSON[] DEFAULT '{}'
+			  colSize JSON[] DEFAULT '{}',
 			  CONSTRAINT FOREIGN_PRODUCT FOREIGN KEY(id) REFERENCES products(id)
 			)
 		`)
