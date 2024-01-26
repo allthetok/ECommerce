@@ -33,7 +33,7 @@ const ultraBoostLight: IndProduct = {
 		{
 			color: 'Cloud White/Arctic Night/Lucid Lemon',
 			sizes: [
-				{ size: 'M 4.5', amount: 0 },
+				{ size: 'M 4.5', amount: 4 },
 				{ size: 'M 5.0', amount: 5 },
 				{ size: 'M 5.5', amount: 5 },
 				{ size: 'M 6.0', amount: 5 },
