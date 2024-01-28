@@ -974,7 +974,7 @@ const NMDR2 = {
 const Yeezy350Base = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 1,
+	"modelId": 5,
 	"name": "Yeezy Boost 350 V2",
 	"releaseDate": "2022-03-21",
 	"colors": [
@@ -1123,7 +1123,7 @@ const Yeezy350Base = {
 const Yeezy500Base = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 2,
+	"modelId": 6,
 	"name": "Yeezy Boost 500",
 	"releaseDate": "2018-07-07",
 	"colors": [
@@ -1203,7 +1203,7 @@ const Yeezy500Base = {
 const Yeezy500Boot = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 2,
+	"modelId": 6,
 	"name": "Yeezy Boost 500 High Boot",
 	"releaseDate": "2023-08-14",
 	"colors": [
@@ -1249,7 +1249,7 @@ const Yeezy500Boot = {
 const Yeezy500High = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 2,
+	"modelId": 6,
 	"name": "Yeezy Boost 500 High",
 	"releaseDate": "2019-12-16",
 	"colors": [
@@ -1295,7 +1295,7 @@ const Yeezy500High = {
 const Yeezy700V2 = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 3,
+	"modelId": 7,
 	"name": "Yeezy Boost 700 V2 Tephra",
 	"releaseDate": "2019-06-15",
 	"colors": [
@@ -1343,7 +1343,7 @@ const Yeezy700V2 = {
 const Yeezy700V3 = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 3,
+	"modelId": 7,
 	"name": "Yeezy Boost 700 V3 Fade Carbon",
 	"releaseDate": "2022-05-21",
 	"colors": [
@@ -1391,7 +1391,7 @@ const Yeezy700V3 = {
 const Yeezy700HiRes = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 3,
+	"modelId": 7,
 	"name": "Yeezy Boost 700 Hi-Res",
 	"releaseDate": "2022-08-02",
 	"colors": [
@@ -1469,7 +1469,7 @@ const Yeezy700HiRes = {
 const YeezyFoamRnr = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 4,
+	"modelId": 8,
 	"name": "Yeezy Foam Runner",
 	"releaseDate": "2022-04-16",
 	"colors": [
@@ -1551,7 +1551,7 @@ const YeezyFoamRnr = {
 const YeezySlides = {
 	"brand": "Yeezy",
 	"brandId": 2,
-	"modelId": 4,
+	"modelId": 8,
 	"name": "Yeezy Slides",
 	"releaseDate": "2022-03-07",
 	"colors": [
@@ -1665,7 +1665,7 @@ const YeezySlides = {
 const NikeAF1Base = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 1,
+	"modelId": 9,
 	"name": "Nike Air Force 1 07",
 	"releaseDate": "2020-12-09",
 	"colors": [
@@ -1747,7 +1747,7 @@ const NikeAF1Base = {
 const NikeAF1LV8 = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 1,
+	"modelId": 9,
 	"name": "Nike Air Force 1 07 LV8",
 	"releaseDate": "2023-01-03",
 	"colors": [
@@ -1829,7 +1829,7 @@ const NikeAF1LV8 = {
 const NikeAirMax97Base = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 2,
+	"modelId": 10,
 	"name": "Nike Air Max 97",
 	"releaseDate": "2018-12-14",
 	"colors": [
@@ -1946,7 +1946,7 @@ const NikeAirMax97Base = {
 const NikeDunkHigh = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 3,
+	"modelId": 11,
 	"name": "Nike Dunk High Retro",
 	"releaseDate": "2018-12-14",
 	"colors": [
@@ -1994,7 +1994,7 @@ const NikeDunkHigh = {
 const NikeDunkLow = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 3,
+	"modelId": 11,
 	"name": "Nike Dunk Low",
 	"releaseDate": "2018-12-14",
 	"colors": [
@@ -2076,7 +2076,7 @@ const NikeDunkLow = {
 const NikeBlazerMid = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 4,
+	"modelId": 12,
 	"name": "Nike Blazer Mid 77 Vintage",
 	"releaseDate": "2020-09-18",
 	"colors": [
@@ -2158,7 +2158,7 @@ const NikeBlazerMid = {
 const NikeBlazerLow = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 4,
+	"modelId": 12,
 	"name": "Nike Blazer Low 77 Jumbo",
 	"releaseDate": "2018-12-14",
 	"colors": [
@@ -2206,7 +2206,7 @@ const NikeBlazerLow = {
 const NikeBlazerOW = {
 	"brand": "Nike",
 	"brandId": 3,
-	"modelId": 4,
+	"modelId": 12,
 	"name": "Nike X Off-White Blazer Mid",
 	"releaseDate": "2018-10-03",
 	"colors": [
@@ -2289,7 +2289,7 @@ const NikeBlazerOW = {
 const AJ1Low = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 1,
+	"modelId": 13,
 	"name": "Air Jordan 1 Low Shoes",
 	"releaseDate": "2020-09-20",
 	"colors": [
@@ -2337,7 +2337,7 @@ const AJ1Low = {
 const AJ1Mid = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 1,
+	"modelId": 13,
 	"name": "Air Jordan 1 Mid Shoes",
 	"releaseDate": "2023-08-29",
 	"colors": [
@@ -2419,7 +2419,7 @@ const AJ1Mid = {
 const AJ1High = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 1,
+	"modelId": 13,
 	"name": "Air Jordan 1 Retro High OG",
 	"releaseDate": "2023-07-22",
 	"colors": [
@@ -2501,7 +2501,7 @@ const AJ1High = {
 const AJ4CJ = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 2,
+	"modelId": 14,
 	"name": "Air Jordan 4 Retro Travis Scott Cactus Jack",
 	"releaseDate": "2018-06-09",
 	"colors": [
@@ -2549,7 +2549,7 @@ const AJ4CJ = {
 const AJ4Base = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 2,
+	"modelId": 14,
 	"name": "Air Jordan 4 Retro OG",
 	"releaseDate": "2023-09-09",
 	"colors": [
@@ -2631,7 +2631,7 @@ const AJ4Base = {
 const AJ5Base = {
 	"brand": "Air Jordan",
 	"brandId": 4,
-	"modelId": 3,
+	"modelId": 15,
 	"name": "Air Jordan 5 Retro Shoes",
 	"releaseDate": "2023-03-04",
 	"colors": [
@@ -2747,7 +2747,7 @@ const AJ5Base = {
 const NB2002RBase = {
 	"brand": "New Balance",
 	"brandId": 5,
-	"modelId": 1,
+	"modelId": 16,
 	"name": "New Balance 2002R Protection Shoes",
 	"releaseDate": "2023-10-26",
 	"colors": [
@@ -2863,7 +2863,7 @@ const NB2002RBase = {
 const NB530Base = {
 	"brand": "New Balance",
 	"brandId": 5,
-	"modelId": 2,
+	"modelId": 17,
 	"name": "New Balance 530 Shoes",
 	"releaseDate": "2022-04-15",
 	"colors": [
@@ -3011,7 +3011,7 @@ const NB530Base = {
 const NB5740Base = {
 	"brand": "New Balance",
 	"brandId": 5,
-	"modelId": 3,
+	"modelId": 18,
 	"name": "New Balance 5740 Shoes",
 	"releaseDate": "2022-10-01",
 	"colors": [
@@ -3093,7 +3093,7 @@ const NB5740Base = {
 const NB5740Bape = {
 	"brand": "New Balance",
 	"brandId": 5,
-	"modelId": 3,
+	"modelId": 18,
 	"name": "New Balance x BAPE 5740 Shoes",
 	"releaseDate": "2022-07-30",
 	"colors": [
