@@ -195,7 +195,7 @@ router.post('/product', async (request: Request, response: Response) => {
 			error: `There already exists a product with that name: ${product}`
 		})
 	}
-
+	//insert into products, sizes with CTE
 	await pool.query(SQL`
 		WITH new_product AS (
 			INSERT INTO products (name, brandId, modelId, releaseDate, price, description, colors)
