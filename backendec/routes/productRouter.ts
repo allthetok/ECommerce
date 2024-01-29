@@ -59,14 +59,60 @@ router.post('/product', async (request: Request, response: Response) => {
 	}
 
 	// await pool.query(SQL`
-	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.name=${productReq}
+	// 	`)
+	// 	.then((response: any) => {
+	// 		console.log(response.rows)
+	// 		productQueryResult = response.rows[0]
+	// 	})
+	// 	.catch((err: any) => {
+	// 		console.log(err)
+	// 		return response.status(404).json({
+	// 			error: `Unable to retrieve product: ${productReq} from database`
+	// 		})
+	// 	})
+
+	// await pool.query(SQL`
+	// 	WITH prod_req AS (
+	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.name=${productReq}
+	// 	),
+	// 	WITH similar_prod AS (
+	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.modelId = prod_req.modelId AND p.name <> ${productReq}
+	// 	)
+	// 	SELECT pr.*, ps.* FROM prod_req pr, similar_prod ps;`)
+	// await pool.query(SQL`
+	// 	WITH prod_req AS (
+	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.name=${productReq}
+	// 	),
+	// WITH similar_prod AS (
+	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
 	// 	FROM products p
 	// 	INNER JOIN brands b ON p.brandId = b.id
 	// 	INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
 	// 	INNER JOIN sizes s ON p.id = s.id
-	// 	WHERE p.name=${productReq}
-	// 	`)
-
+	// 	WHERE p.modelId = (SELECT modelId FROM prod_req) AND p.name <> (SELECT name FROM prod_req)
+	// )
+	// 	SELECT pr.*, ps.* FROM prod_req pr, similar_prod ps;`)
 	await pool.query(SQL`
 		WITH prod_req AS (
 			SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
@@ -76,16 +122,33 @@ router.post('/product', async (request: Request, response: Response) => {
 			INNER JOIN sizes s ON p.id = s.id
 			WHERE p.name=${productReq}
 		),
-		WITH similar_prod AS (
+		similar_prod AS (
 			SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
 			FROM products p
 			INNER JOIN brands b ON p.brandId = b.id
 			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
 			INNER JOIN sizes s ON p.id = s.id
-			WHERE p.modelId = prod_req.modelId AND p.name <> ${productReq}
+			WHERE p.modelId = (SELECT modelId FROM prod_req) AND p.name <> (SELECT name FROM prod_req)
 		)
-		SELECT pr.*, ps.* FROM prod_req pr, similar_prod ps
-		`)
+		SELECT pr.*, ps.* FROM prod_req pr, similar_prod ps;`)
+	// await pool.query(SQL`
+	// 	WITH prod_req AS (
+	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.name=${productReq}
+	// 	),
+	// 	similar_prod AS (
+	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.modelId = (SELECT modelId FROM prod_req) AND p.name <> (SELECT name FROM prod_req)
+	// 	)
+	// 	SELECT productReq AS prreq, similarProducts FROM (SELECT pr.* FROM prod_req pr) AS productReq, (SELECT ps.* FROM similar_prod ps) AS similarProducts;`)
 		.then((response: any) => {
 			console.log(response.rows)
 			productQueryResult = response.rows
@@ -96,6 +159,7 @@ router.post('/product', async (request: Request, response: Response) => {
 				error: `Unable to retrieve product: ${productReq} from database`
 			})
 		})
+
 	return productQueryResult === null ? response.status(404).json({ error: `Unable to retrieve product: ${productReq} from database` }): response.status(200).json(productQueryResult)
 
 })
