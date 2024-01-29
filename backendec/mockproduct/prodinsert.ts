@@ -495,7 +495,7 @@ const superStarOriginal = {
 			"color": "Core Black / Cloud White / Core Black",
 			"images": ["https://assets.adidas.com/images/w_840,f_auto,q_auto/af405adab99747708f01aad8011626ff_9366/Superstar_Shoes_Black_EG4957_01_standard.jpg",
 				"https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4bc064f2ff6c4d848308aad801165d86_9366/Superstar_Shoes_Black_EG4957_04_standard.jpg",
-				"https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb33bd67c8c64ebd96f8aad801164853_9366/Superstar_Shoes_Black_EG4957_02_standard_hover.jpg",]
+				"https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb33bd67c8c64ebd96f8aad801164853_9366/Superstar_Shoes_Black_EG4957_02_standard_hover.jpg"]
 		},
 		{
 			"color": "Cloud White / Collegiate Green / Cloud White",
@@ -505,7 +505,7 @@ const superStarOriginal = {
 		}
 	],
 	"price": 130,
-	"description": "Built for basketball, adopted by hip hop and skate, the classic leather Superstar changed the game the moment it stepped off the court.	The serrated 3-Stripes mark, iconic shell style toe, and box logo makes this one of the true Originals.",
+	"description": "Built for basketball, adopted by hip hop and skate, the classic leather Superstar changed the game the moment it stepped off the court. The serrated 3-Stripes mark, iconic shelly style toe, and box logo makes this one of the true Originals.",
 	"sizes": [
 		{
 			"color": "Cloud White / Core Black / Cloud White",
@@ -657,20 +657,20 @@ const stanSmithOriginal = {
 				"https://assets.adidas.com/images/w_840,f_auto,q_auto/7070d7f34b284c91ac1fac0900afb687_9366/Stan_Smith_Shoes_White_FX5500_04_standard.jpg"]
 		},
 		{
-			"color": 	"Cloud White / Cloud White / Green",
+			"color": "Cloud White / Cloud White / Green",
 			"images": ["https://assets.adidas.com/images/w_840,f_auto,q_auto/b47d77eba6f945ea8dabac210127b11e_9366/Stan_Smith_Shoes_White_FX5501_01_standard.jpg",
 				"https://assets.adidas.com/images/w_840,f_auto,q_auto/817c815ba1db46629f89ac210127bebb_9366/Stan_Smith_Shoes_White_FX5501_02_standard_hover.jpg",
-				"https://assets.adidas.com/images/w_840,f_auto,q_auto/f633a0c9cb124e16914cac210127ca62_9366/Stan_Smith_Shoes_White_FX5501_04_standard.jpg",]
+				"https://assets.adidas.com/images/w_840,f_auto,q_auto/f633a0c9cb124e16914cac210127ca62_9366/Stan_Smith_Shoes_White_FX5501_04_standard.jpg"]
 		},
 		{
-			"color": 	"Cloud White / Cloud White / Core Black",
-			"images": [			"https://assets.adidas.com/images/w_840,f_auto,q_auto/68ae7ea7849b43eca70aac1e00f5146d_9366/Stan_Smith_Shoes_White_FX5502_01_standard.jpg",
+			"color": "Cloud White / Cloud White / Core Black",
+			"images": [	"https://assets.adidas.com/images/w_840,f_auto,q_auto/68ae7ea7849b43eca70aac1e00f5146d_9366/Stan_Smith_Shoes_White_FX5502_01_standard.jpg",
 				"https://assets.adidas.com/images/w_840,f_auto,q_auto/ac706d8555244a6e8ea7ac1e00f521d1_9366/Stan_Smith_Shoes_White_FX5502_02_standard_hover.jpg",
 				"https://assets.adidas.com/images/w_840,f_auto,q_auto/f86168171d2a4644a8eeac1e00f52f85_9366/Stan_Smith_Shoes_White_FX5502_04_standard.jpg"]
 		}
 	],
 	"price": 130,
-	"description": "Timeless appeal. Effortless style. Everyday versatility. For over 50 years and counting, adidas Stan Smith Shoes have continued to hold their place as an icon. This pair shows off a fresh redesign as part of adidas 'commitment to use only recycled polyester by 2024. With a vegan upper and an outsole made from rubber waste, they still have iconic style, they're just made with the planet in mind. This product is made with vegan alternatives to animal-derived ingredients or materials. It is also made with Primegreen, a series of high-performance recycled materials. 50% of upper is recycled content. No virgin polyester",
+	"description": "Timeless appeal. Effortless style. Everyday versatility. For over 50 years and counting, adidas Stan Smith Shoes have continued to hold their place as an icon. This pair shows off a fresh redesign as part of adidas commitment to use only recycled polyester by 2024. With a vegan upper and an outsole made from rubber waste, they still have iconic style, they're just made with the planet in mind. This product is made with vegan alternatives to animal-derived ingredients or materials. It is also made with Primegreen, a series of high-performance recycled materials. 50% of upper is recycled content. No virgin polyester",
 	"sizes": [
 		{
 			"color": "Cloud White / Cloud White / Collegiate Navy",
@@ -818,7 +818,7 @@ const NMDR1 = {
 			"color": "Core Black / Core Black / Core Black",
 			"images": ["https://assets.adidas.com/images/w_840,f_auto,q_auto/62d96641e799450fbbdfad0800cb06ed_9366/NMD_R1_Shoes_Black_GZ9256_01_standard.jpg",
 				"https://assets.adidas.com/images/w_840,f_auto,q_auto/3373d7a437dd4e6688ccad0800cb1291_9366/NMD_R1_Shoes_Black_GZ9256_02_standard_hover.jpg",
-				"https://assets.adidas.com/images/w_840,f_auto,q_auto/8975c8cd84524d568552ad0800cb207e_9366/NMD_R1_Shoes_Black_GZ9256_04_standard.jpg",]
+				"https://assets.adidas.com/images/w_840,f_auto,q_auto/8975c8cd84524d568552ad0800cb207e_9366/NMD_R1_Shoes_Black_GZ9256_04_standard.jpg"]
 		},
 		{
 			"color": "White Tint / Glory Red / Semi Lucid Blue",
@@ -993,7 +993,7 @@ const Yeezy350Base = {
 			"color": 	"White/Core Black/Red",
 			"images": ["https://stayfresh.ca/cdn/shop/products/ADIDASYEEZYBOOST350V2BLACKREDbCP9652_600x.jpg?v=1667867388",
 				"https://stayfresh.ca/cdn/shop/products/ADIDASYEEZYBOOST350V2BLACKREDaCP9652_600x.jpg?v=1667867388",
-				"https://stayfresh.ca/cdn/shop/products/ADIDASYEEZYBOOST350V2BLACKREDbCP9652_300x.jpg?v=1667867388",]
+				"https://stayfresh.ca/cdn/shop/products/ADIDASYEEZYBOOST350V2BLACKREDbCP9652_300x.jpg?v=1667867388"]
 		},
 		{
 			"color": 	"Beluga Reflective/Steeple Gray/Solar Red",
@@ -1130,7 +1130,7 @@ const Yeezy500Base = {
 		{
 			"color": "Utility Black/Utility Black/Utility Black",
 			"images": ["https://stayfresh.ca/cdn/shop/products/SF_Adidas_Yeezy_500_Utility_Black_F36640-1_600x.jpg?v=1571278055",
-				"https://stayfresh.ca/cdn/shop/products/SF_Adidas_Yeezy_500_Utility_Black_F36640-4_600x.jpg?v=1571278055",]
+				"https://stayfresh.ca/cdn/shop/products/SF_Adidas_Yeezy_500_Utility_Black_F36640-4_600x.jpg?v=1571278055"]
 		},
 		{
 			"color": 	"Bone White/Bone White/Bone White",
@@ -1259,7 +1259,7 @@ const Yeezy500High = {
 		}
 	],
 	"price": 220,
-	"description": "Celebrity Kanye West retools the 500 profile with the adidas Yeezy 500 High. Debuted in December 2019, this revamp boasts a Slate-colored neoprene base	layered with suede and tumbled leather elements. Utility laces secure the tongue and a patterned mudguard bolsters the sidewall. The molded midsole is supported by Adiprene cushioning while the robust rubber outsole utilizes a wavy tread pattern.",
+	"description": "Celebrity Kanye West retools the 500 profile with the adidas Yeezy 500 High. Debuted in December 2019, this revamp boasts a Slate-colored neoprene base layered with suede and tumbled leather elements. Utility laces secure the tongue and a patterned mudguard bolsters the sidewall. The molded midsole is supported by Adiprene cushioning while the robust rubber outsole utilizes a wavy tread pattern.",
 	"sizes": [
 		{
 			"color": "Slate/Slate/Slate",
@@ -1307,7 +1307,7 @@ const Yeezy700V2 = {
 		}
 	],
 	"price": 300,
-	"description": "The Yeezy Boost 700 V2, Tephra, brings a subdued colorway to the second iteration of the Yeezy 700 line. The shoes upper is built with a layered mix of mesh and suede,	finished in neutral hues. A darker look emerges on the signature bulky sole unit, which houses a full-length Boost midsole for cushioning. Underfoot, a gum rubber outsole provides	traction while offering an elevated finish.",
+	"description": "The Yeezy Boost 700 V2, Tephra, brings a subdued colorway to the second iteration of the Yeezy 700 line. The shoes upper is built with a layered mix of mesh and suede,finished in neutral hues. A darker look emerges on the signature bulky sole unit, which houses a full-length Boost midsole for cushioning. Underfoot, a gum rubber outsole provides traction while offering an elevated finish.",
 	"sizes": [
 		{
 			"color": "Tephra/Tephra/Tephra",
@@ -1402,10 +1402,10 @@ const Yeezy700HiRes = {
 		{
 			"color": 	"Hi-Res Red/Hi-Res Red/Hi-Res Red",
 			"images": ["https://stayfresh.ca/cdn/shop/products/ezgif-4-0dff0c086b_600x.jpg?v=1678130147"]
-		},
+		}
 	],
 	"price": 300,
-	"description": "The adidas Yeezy Boost 700 Hi-Res Blue/Hi-Res Red features a vibrant shade across most of the lifestyle runner designed by Kanye West. Hi-Res Blue/Red appears on parts of the upper and midsole, contrasted by black suede overlays and grey near the front of the shoe and toe cap. The sculpted midsole features a hit of red near the front, while full-length Boost cushioning is embedded right	above the gum rubber outsole.",
+	"description": "The adidas Yeezy Boost 700 Hi-Res Blue/Hi-Res Red features a vibrant shade across most of the lifestyle runner designed by Kanye West. Hi-Res Blue/Red appears on parts of the upper and midsole, contrasted by black suede overlays and grey near the front of the shoe and toe cap. The sculpted midsole features a hit of red near the front, while full-length Boost cushioning is embedded right above the gum rubber outsole.",
 	"sizes": [
 		{
 			"color": 	"Hi-Res Blue/Hi-Res Blue-Hi-Res Blue",
@@ -1475,16 +1475,16 @@ const YeezyFoamRnr = {
 	"colors": [
 		{
 			"color": 	"Slate Grey/Slate Grey/ Slate Grey",
-			"images": ["https://stayfresh.ca/cdn/shop/products/ezgif.com-gif-maker_32_600x.jpg?v=1654716126",]
+			"images": ["https://stayfresh.ca/cdn/shop/products/ezgif.com-gif-maker_32_600x.jpg?v=1654716126"]
 		},
 		{
 			"color": 	"Granite/Granite/Granite",
-			"images": ["https://stayfresh.ca/cdn/shop/products/ipad_adidas-yeezy-foam-runner-mx-sand-grey_600x.jpg?v=1648660004",]
+			"images": ["https://stayfresh.ca/cdn/shop/products/ipad_adidas-yeezy-foam-runner-mx-sand-grey_600x.jpg?v=1648660004"]
 		},
 		{
 			"color": 	"Bone/Bone/Bone",
 			"images": ["https://stayfresh.ca/cdn/shop/files/ezgif-1-fe30e3d09a_600x.jpg?v=1691526188"]
-		},
+		}
 	],
 	"price": 90,
 	"description": "The Yeezy Foam Runner features a unique look, utilizing a one-piece foam upper with a porous design, crafted from environmentally friendly algae. Kanye West and adidas unleashed a lifestyle slip-on with no shoelaces, arriving in many different colorways. Explore a selection of Foam RNRs including Carbon, Stone Salt, Stone Taupe and Desert Sand.",
@@ -1556,21 +1556,21 @@ const YeezySlides = {
 	"releaseDate": "2022-03-07",
 	"colors": [
 		{
-			"color": 	"Slate Grey/Slate Grey/ Slate Grey",
+			"color": "Slate Grey/Slate Grey/ Slate Grey",
 			"images": ["https://stayfresh.ca/cdn/shop/files/adidas-yeezy-slides-slate-grey-ID2350-release-date-4_600x.jpg?v=1692392595"]
 		},
 		{
-			"color": 	"Pure/Pure/Pure",
+			"color": "Pure/Pure/Pure",
 			"images": ["https://stayfresh.ca/cdn/shop/products/YeezySlidePureAGZ5554_4476b59f-e892-4fd2-a085-8caa4143371c_600x.jpg?v=1642794272",
 				"https://stayfresh.ca/cdn/shop/products/YeezySlidePureCGZ5554_876119bc-b976-454a-939c-1ddedd910aba_600x.jpg?v=1642794272",
-				"https://stayfresh.ca/cdn/shop/products/YeezySlidePureDGZ5554_8ce2827f-aa1d-4fe9-9f80-a7b2bf906a0f_600x.jpg?v=1642794272",]
+				"https://stayfresh.ca/cdn/shop/products/YeezySlidePureDGZ5554_8ce2827f-aa1d-4fe9-9f80-a7b2bf906a0f_600x.jpg?v=1642794272"]
 		},
 		{
 			"color": 	"Azure/Azure/Azure",
 			"images": ["https://stayfresh.ca/cdn/shop/files/FRONT-WEB-ADIDAS-YEEZY-SLIDE-AZURE-2023_600x.jpg?v=1686890698",
 				"https://stayfresh.ca/cdn/shop/files/SIDE-WEB-ADIDAS-YEEZY-SLIDE-AZURE-2023_600x.jpg?v=1686890698",
 				"https://stayfresh.ca/cdn/shop/files/BACK-WEB-ADIDAS-YEEZY-SLIDE-AZURE-2023_600x.jpg?v=1686890911"]
-		},
+		}
 	],
 	"price": 60,
 	"description": "As part of Yeezys sixth collection, Kanye West and adidas introduced the Yeezy Slide in 2018. Featuring monotone colorways, the Yeezy Slide is an elevated pool slide design, featuring injection-molded construction, a shark-tooth outsole, and a forefoot strap. The Yeezy Slides maintain the look and feel of a classic sandal, but with a few design touches to set them apart. Key colorways of the Yeezy Slides include Bone, Sand and Azure.",
@@ -1673,10 +1673,10 @@ const NikeAF1Base = {
 			"color": "White/White/White",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-shoes-rWtqPn.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/33533fe2-1157-4001-896e-1803b30659c8/air-force-1-07-shoes-rWtqPn.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0a300da-2e16-4483-ba64-9815cf0598ac/air-force-1-07-shoes-rWtqPn.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0a300da-2e16-4483-ba64-9815cf0598ac/air-force-1-07-shoes-rWtqPn.png"]
 		},
 		{
-			"color": 	"Black/Black/Black",
+			"color": "Black/Black/Black",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fc4622c4-2769-4665-aa6e-42c974a7705e/air-force-1-07-shoes-rWtqPn.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/c331ff82-87dd-453f-b6d4-1c81ef5e29aa/air-force-1-07-shoes-rWtqPn.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/900c2ac8-8a3e-45f7-aac7-c92ccce8505a/air-force-1-07-shoes-rWtqPn.png"]
@@ -1714,7 +1714,7 @@ const NikeAF1Base = {
 			]
 		},
 		{
-			"color": 	"Black/Black/Black",
+			"color": "Black/Black/Black",
 			"sizes": [
 				{ "size": "M 4.5", "amount": 5 },
 				{ "size": "M 5.0", "amount": 5 },
@@ -1755,14 +1755,14 @@ const NikeAF1LV8 = {
 			"color": "Anthracite/Cool Grey/Black/Wolf Grey",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5dd4d11f-44bb-4df5-aca5-5c44f1aec127/air-force-1-lv8-shoe-vXKF0h.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/55e0cc58-a8b0-4c5d-9a74-9316e016f55d/air-force-1-lv8-shoe-vXKF0h.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f78d6c3d-4bc0-4979-9062-350b14cab780/air-force-1-lv8-shoe-vXKF0h.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f78d6c3d-4bc0-4979-9062-350b14cab780/air-force-1-lv8-shoe-vXKF0h.png"]
 		},
 		{
 			"color": 	"White/Platinum Tint/Sail",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/i1-bf108f08-590a-4de7-94d2-f70b22b7f6b6/air-force-1-lv8-shoe-vXKF0h.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/i1-d27b96a9-5426-46f0-8dfc-4ab05b18fbb3/air-force-1-lv8-shoe-vXKF0h.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/i1-4c711cec-eb12-47ce-a454-f7f34db76e22/air-force-1-lv8-shoe-vXKF0h.png"]
-		},
+		}
 	],
 	"price": 130,
 	"description": "Never mistaken, the Nike Air Force 1 LV8 is the hardwood classic that redefined basketball shoes and sneaker culture forever. Suede details atop synthetic leather on the upper deliver the iconic style that landed it at the pinnacle of street, sport and culture for decades.",
@@ -1796,7 +1796,7 @@ const NikeAF1LV8 = {
 			]
 		},
 		{
-			"color": 	"White/Platinum Tint/Sail",
+			"color": "White/Platinum Tint/Sail",
 			"sizes": [
 				{ "size": "M 4.5", "amount": 5 },
 				{ "size": "M 5.0", "amount": 5 },
@@ -1837,13 +1837,13 @@ const NikeAirMax97Base = {
 			"color": "White/White/White",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a25a1901-a687-4dd3-94f7-472e7af433aa/air-max-97-shoes-HdNjNN.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/3e98ecdc-f0d6-424f-9096-f077c2d561a4/air-max-97-shoes-HdNjNN.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/602edc9d-5992-45d2-bc6f-35b5b062b908/air-max-97-shoes-HdNjNN.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/602edc9d-5992-45d2-bc6f-35b5b062b908/air-max-97-shoes-HdNjNN.png"]
 		},
 		{
-			"color": 	"Black/Black/Black",
+			"color": "Black/Black/Black",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a47b2ef9-8239-4e82-99fd-e6159c0df489/air-max-97-shoes-z3TlrlVN.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a717540-b712-486d-8612-acd2a8905d5f/air-max-97-shoes-z3TlrlVN.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/33aea626-bb43-4091-805c-ba12cf978f2d/air-max-97-shoes-z3TlrlVN.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/33aea626-bb43-4091-805c-ba12cf978f2d/air-max-97-shoes-z3TlrlVN.png"]
 		},
 		{
 			"color": "Black/White/Opti Yellow",
@@ -1885,7 +1885,7 @@ const NikeAirMax97Base = {
 			]
 		},
 		{
-			"color": 	"Black/Black/Black",
+			"color": "Black/Black/Black",
 			"sizes": [
 				{ "size": "M 4.5", "amount": 5 },
 				{ "size": "M 5.0", "amount": 5 },
@@ -2002,7 +2002,7 @@ const NikeDunkLow = {
 			"color": "Anthracite/Cool Grey/Industrial Blue/Pure Platinum",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/938273c4-d731-4fe6-b2c7-1a75002a1536/dunk-low-shoes-6NtmS9.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a9323b98-8a90-4b2e-9051-6a508d053836/dunk-low-shoes-6NtmS9.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/39f2357d-12b7-4e4c-89e0-f9f9f563abed/dunk-low-shoes-6NtmS9.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/39f2357d-12b7-4e4c-89e0-f9f9f563abed/dunk-low-shoes-6NtmS9.png"]
 		},
 		{
 			"color": "Midnight Navy/Desert Ochre/Sail/Midnight Navy",
@@ -2214,13 +2214,13 @@ const NikeBlazerOW = {
 			"color": "Canvas/Total Orange-Pale/Vanilla-Black",
 			"images": ["https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Pale_Vanilla_AA3832-700-1_600x.jpg?v=1571278187",
 				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Pale_Vanilla_AA3832-700-6_600x.jpg?v=1571278187",
-				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Pale_Vanilla_AA3832-700-2_600x.jpg?v=1571278187",]
+				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Pale_Vanilla_AA3832-700-2_600x.jpg?v=1571278187"]
 		},
 		{
 			"color": "Black/White-Cone/Black",
 			"images": ["https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Grim_Reepers_AA3832-001-1_600x.jpg?v=1571278187",
 				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Grim_Reepers_AA3832-001-2_600x.jpg?v=1571278187",
-				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Grim_Reepers_AA3832-001-6_600x.jpg?v=1571278187",]
+				"https://stayfresh.ca/cdn/shop/products/SF_Nike_The_10-_Nike_Blazer_Mid_Grim_Reepers_AA3832-001-6_600x.jpg?v=1571278187"]
 		}
 	],
 	"price": 450,
@@ -2345,7 +2345,7 @@ const AJ1Mid = {
 			"color": "White/White/Black/Black",
 			"images": ["https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/288a2235-54ce-4f8e-a133-0117cbc381b4/air-jordan-1-mid-mens-shoes-X5pM09.png",
 				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/852a384c-a6ef-45af-9bf7-2ed47d64ae4f/air-jordan-1-mid-mens-shoes-X5pM09.png",
-				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ce623fbc-daeb-47ea-ae70-1ffa4847c569/air-jordan-1-mid-mens-shoes-X5pM09.png",]
+				"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ce623fbc-daeb-47ea-ae70-1ffa4847c569/air-jordan-1-mid-mens-shoes-X5pM09.png"]
 		},
 		{
 			"color": "White/Black/Gym Red",
@@ -2427,13 +2427,13 @@ const AJ1High = {
 			"color": "University Blue/Black/White",
 			"images": ["https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIa555088-711_600x.jpg?v=1668543640",
 				"https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIb555088-711_600x.jpg?v=1668543640",
-				"https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIc555088-711_600x.jpg?v=1668545663",]
+				"https://stayfresh.ca/cdn/shop/products/AIRJORDAN1RETROHIGHOGTAXIc555088-711_600x.jpg?v=1668545663"]
 		},
 		{
 			"color": "Taxi/Black/Sail",
 			"images": ["https://cdn.flightclub.com/750/TEMPLATE/358111/1.jpg",
 				"https://cdn.flightclub.com/750/TEMPLATE/358111/3.jpg",
-				"https://cdn.flightclub.com/750/TEMPLATE/358111/4.jpg",]
+				"https://cdn.flightclub.com/750/TEMPLATE/358111/4.jpg"]
 		}
 	],
 	"price": 250,
@@ -2557,7 +2557,7 @@ const AJ4Base = {
 			"color": "White/Fire Red/Black/Neutral Grey",
 			"images": ["https://cdn.flightclub.com/750/TEMPLATE/367078/1.jpg",
 				"https://cdn.flightclub.com/750/TEMPLATE/367078/2.jpg",
-				"https://cdn.flightclub.com/750/TEMPLATE/367078/3.jpg",]
+				"https://cdn.flightclub.com/750/TEMPLATE/367078/3.jpg"]
 		},
 		{
 			"color": "Black/Tour Yellow",
@@ -2645,7 +2645,7 @@ const AJ5Base = {
 			"color": "Deep Burgundy/Light Graphite/Metallic Silver",
 			"images": ["https://cdn.flightclub.com/750/TEMPLATE/365489/1.jpg",
 				"https://cdn.flightclub.com/750/TEMPLATE/365489/2.jpg",
-				"https://cdn.flightclub.com/750/TEMPLATE/365489/3.jpg",]
+				"https://cdn.flightclub.com/750/TEMPLATE/365489/3.jpg"]
 		},
 		{
 			"color": "Black/Racer Blue/Reflective Silver",
@@ -2761,7 +2761,7 @@ const NB2002RBase = {
 			"color": "Black/Phantom/Gunmetal",
 			"images": ["https://nb.scene7.com/is/image/NB/m2002rbk_nb_02_i?$pdpflexf2$&wid=440&hei=440",
 				"https://nb.scene7.com/is/image/NB/m2002rbk_nb_05_i?$pdpflexf2$&wid=440&hei=440",
-				"https://nb.scene7.com/is/image/NB/m2002rbk_nb_04_i?$pdpflexf2$&wid=440&hei=440",]
+				"https://nb.scene7.com/is/image/NB/m2002rbk_nb_04_i?$pdpflexf2$&wid=440&hei=440"]
 		},
 		{
 			"color": "Slate Grey/Raincloud/Black",
