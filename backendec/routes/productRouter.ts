@@ -15,6 +15,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
 	let brandReq: string[] = body.brand
 	let brandQueryResult: any
+	let brandOutput: any[]
 	let rawQueryResult: any
 	let brandExists = true
 	let brandInStatement: string = ''
@@ -62,9 +63,64 @@ router.post('/brand', async (request: Request, response: Response) => {
 			INNER JOIN sizes s ON p.id = s.id
 			WHERE b.name IN`.append(`(${brandInStatement})`))
 		.then((response: any) => {
-			console.log(response.rows)
+			// console.log(response.rows)
 			if (response.rows.length !== 0) {
 				rawQueryResult = response.rows
+				// console.log(rawQueryResult.map((indRow: any) => ({ brand: indRow.brand, modelname: indRow.modelname })))
+				// const modelNameSet = new Set(rawQueryResult.map((indRow: any) => indRow.modelname))
+				// const brandModelSet = new Set(rawQueryResult.map((indRow: any) => { indRow.brand, indRow.modelname} ))
+				// const brandModelSet = new Set(rawQueryResult.map((indRow: any) => ({ brand: indRow.brand, modelname: indRow.modelname })))
+
+				const modelMap = new Map<string, string[]>()
+
+				for (let i = 0; i < response.rows.length; i++) {
+					const indRow: any = response.rows[i]
+					if (modelMap.has(indRow.brand)) {
+						const curModels: string[] = modelMap.get(indRow.brand)
+						const toInsert: string[] = [...curModels]
+						if (toInsert.includes(indRow.modelname)) {
+							continue
+						}
+						else {
+							toInsert.push(indRow.modelname)
+							modelMap.set(indRow.brand, toInsert)
+						}
+					}
+					else {
+						modelMap.set(indRow.brand, [indRow.modelname])
+					}
+				}
+
+				console.log(modelMap)
+
+				//map where key is brand name, value is unique list of strings of all modelnames
+
+				// brandReq.forEach((brandName: string) => {
+				// 	const brandEl: any = {
+				// 		id: 0,
+				// 		name: brandName,
+				// 		allModels: []
+				// 	}
+				// 	modelNameSet.forEach((val: string) => {
+				// 		const modelEl: any = {
+				// 			id: 0,
+				// 			name: 'None',
+				// 			brandId: brandEl.id,
+				// 			brand: brandName,
+				// 			allProducts: []
+				// 		}
+				// 	})
+				// })
+
+				// console.log(modelNameSet)
+
+				// modelNameSet.forEach((val: string) => {
+				// 	console.log(rawQueryResult.filter((indRow: any) => indRow.modelname === val))
+				// })
+
+
+
+
 				brandQueryResult = {
 					brandReq: [{
 						id: rawQueryResult[0].modelid,
