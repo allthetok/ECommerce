@@ -7,18 +7,17 @@ import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
 import { Brands, IndProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
+import { formatInStatement } from '../helpers/requests'
 
 const router = express.Router()
 
 router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
 	let brandReq: string[] = body.brand
-	let productQueryResult: any
+	let brandQueryResult: any
 	let rawQueryResult: any
 	let brandExists = true
-	let productRequested: any
-	let similarProducts: any[]
-	let formattedInStatement: string = ''
+	let brandInStatement: string = ''
 	if (!brandReq || brandReq === null || brandReq === undefined || brandReq.length === 0) {
 		return response.status(404).json({
 			message: `No brand specified: ${brandReq}`
@@ -32,17 +31,16 @@ router.post('/brand', async (request: Request, response: Response) => {
 		}
 	}
 
-	formattedInStatement=`(${brandReq.map(i => `'${i}'`).join(',')})`
+	brandInStatement = formatInStatement(brandReq)
 
-	console.log(formattedInStatement)
 	await pool.query(SQL`
-			SELECT 1 WHERE EXISTS 
-				(SELECT * FROM brands b
-					INNER JOIN models m
-					ON b.id = m.brandId
-					INNER JOIN products p 
-					ON m.id = p.modelId AND b.id = p.brandId
-					WHERE b.name IN${formattedInStatement})`)
+		SELECT 1 WHERE EXISTS 
+			(SELECT * FROM brands b
+				INNER JOIN models m
+				ON b.id = m.brandId
+				INNER JOIN products p 
+				ON m.id = p.modelId AND b.id = p.brandId
+				WHERE b.name IN`.append(`(${brandInStatement}) )`))
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				brandExists = !brandExists

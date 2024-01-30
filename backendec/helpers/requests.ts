@@ -18,4 +18,6 @@ const corsOptions = {
 	optionSuccessStatus: 200
 }
 
-export { requestLogger, corsOptions }
+const formatInStatement = (input: string[]) => `${input.map((c: string) => `'${c}'`).join(',')}`
+
+export { requestLogger, corsOptions, formatInStatement }
