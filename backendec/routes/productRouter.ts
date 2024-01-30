@@ -51,7 +51,78 @@ router.post('/brand', async (request: Request, response: Response) => {
 			error: `There is no brand that exists with that name: ${brandReq}`
 		})
 	}
-	return response.status(200).json({ message: 'hello' })
+
+	await pool.query(SQL`
+		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+			FROM brands b
+			INNER JOIN models m
+			ON b.id = m.brandId
+			INNER JOIN products p
+			ON b.id = p.brandId AND m.id = p.modelId
+			INNER JOIN sizes s ON p.id = s.id
+			WHERE b.name IN`.append(`(${brandInStatement})`))
+		.then((response: any) => {
+			console.log(response.rows)
+			if (response.rows.length !== 0) {
+				rawQueryResult = response.rows
+				brandQueryResult = {
+					brandReq: [{
+						id: rawQueryResult[0].modelid,
+						name: rawQueryResult[0].modelname,
+						brandId: rawQueryResult[0].brandid,
+						brand: rawQueryResult[0].brand,
+						allProducts: rawQueryResult
+					}]
+				}
+			}
+			else {
+				brandQueryResult = {
+					brandReq: []
+				}
+			}
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: `Unable to retrieve brand and associated models/products for brand: ${brandReq.join(',')} from database`
+			})
+		})
+
+	return brandQueryResult.brandReq.length !== 0 ? response.status(200).json(brandQueryResult) : response.status(404).json({ error: `Unable to retrieve brand and associated models/products for brand: ${brandReq.join(',')} from database` })
+
+
+	// SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 	FROM models m
+	// 	INNER JOIN brands b ON m.brandId = b.id
+	// 	INNER JOIN products p ON m.id = p.modelId AND b.id = p.brandId
+	// 	INNER JOIN sizes s ON s.id = p.id
+	// 	WHERE m.name=${modelReq} `)
+	// .then((response: any) => {
+	// 	console.log(response.rows)
+	// 	console.log(response)
+	// 	if (response.rows.length !== 0) {
+	// 		rawQueryResult = response.rows
+	// 		modelQueryResult = {
+	// 			modelReq: {
+	// 				id: rawQueryResult[0].modelid,
+	// 				name: rawQueryResult[0].modelname,
+	// 				brandId: rawQueryResult[0].brandid,
+	// 				brand: rawQueryResult[0].brand,
+	// 				allProducts: rawQueryResult
+	// 			}
+	// 		}
+	// 	}
+	// 	else {
+	// 		modelQueryResult = {
+	// 			modelReq: {
+	// 				id: 0,
+	// 				name: 'None',
+	// 				brandId: 0,
+	// 				brand: 'None',
+	// 				allProducts: []
+	// 			}
+	// 		}
+	// 	}
 
 	// await pool.query(SQL`
 	// 	WITH prod_req AS (
