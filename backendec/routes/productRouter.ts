@@ -126,7 +126,7 @@ router.post('/model', async (request: Request, response: Response) => {
 					modelReq: {
 						id: rawQueryResult[0].modelid,
 						name: rawQueryResult[0].modelname,
-						brandId: rawQueryResult[0].brandid, //FIX HERE
+						brandId: rawQueryResult[0].brandid,
 						brand: rawQueryResult[0].brand,
 						allProducts: rawQueryResult
 					}
