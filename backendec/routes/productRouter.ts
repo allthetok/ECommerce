@@ -7,7 +7,7 @@ import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
 import { Brands, IndProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
-import { formatInStatement } from '../helpers/requests'
+import { buildBrandOutput, buildModelOutput, formatInStatement } from '../helpers/requests'
 
 const router = express.Router()
 
@@ -65,47 +65,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 			WHERE b.name IN`.append(`(${brandInStatement})`))
 		.then((response: any) => {
 			if (response.rows.length !== 0) {
-				rawQueryResult = response.rows
-				const modelMap = new Map<string, string[]>()
-				//map where key is brand name, value is unique list of strings of all modelnames
-				for (let i = 0; i < rawQueryResult.length; i++) {
-					const indRow: any = rawQueryResult[i]
-					if (modelMap.has(indRow.brand)) {
-						const curModels: string[] = modelMap.get(indRow.brand)
-						const toInsert: string[] = [...curModels]
-						if (toInsert.includes(indRow.modelname)) {
-							continue
-						}
-						else {
-							toInsert.push(indRow.modelname)
-							modelMap.set(indRow.brand, toInsert)
-						}
-					}
-					else {
-						modelMap.set(indRow.brand, [indRow.modelname])
-					}
-				}
-
-				for (const [key, value] of modelMap.entries()) {
-					const filteredRows = rawQueryResult.filter((indRow: any) => indRow.brand === key)
-					const brandEl: any = {
-						id: filteredRows[0].brandid,
-						name: key,
-						allModels: []
-					}
-					value.map((modelName: string) => {
-						const modelFilteredRows = filteredRows.filter((indRow: any) => indRow.modelname === modelName)
-						const modelEl: any = {
-							id: filteredRows[0].modelid,
-							name: modelName,
-							brandId: brandEl.id,
-							brand: key,
-							allProducts: modelFilteredRows
-						}
-						brandEl.allModels.push(modelEl)
-					})
-					brandQueryResult.brandReq.push(brandEl)
-				}
+				brandQueryResult = buildBrandOutput(response.rows)
 			}
 		})
 		.catch((err: any) => {
@@ -116,81 +76,6 @@ router.post('/brand', async (request: Request, response: Response) => {
 		})
 
 	return brandQueryResult.brandReq.length !== 0 ? response.status(200).json(brandQueryResult) : response.status(404).json({ error: `Unable to retrieve brand and associated models/products for brand: ${brandReq.join(',')} from database` })
-
-
-	// SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 	FROM models m
-	// 	INNER JOIN brands b ON m.brandId = b.id
-	// 	INNER JOIN products p ON m.id = p.modelId AND b.id = p.brandId
-	// 	INNER JOIN sizes s ON s.id = p.id
-	// 	WHERE m.name=${modelReq} `)
-	// .then((response: any) => {
-	// 	console.log(response.rows)
-	// 	console.log(response)
-	// 	if (response.rows.length !== 0) {
-	// 		rawQueryResult = response.rows
-	// 		modelQueryResult = {
-	// 			modelReq: {
-	// 				id: rawQueryResult[0].modelid,
-	// 				name: rawQueryResult[0].modelname,
-	// 				brandId: rawQueryResult[0].brandid,
-	// 				brand: rawQueryResult[0].brand,
-	// 				allProducts: rawQueryResult
-	// 			}
-	// 		}
-	// 	}
-	// 	else {
-	// 		modelQueryResult = {
-	// 			modelReq: {
-	// 				id: 0,
-	// 				name: 'None',
-	// 				brandId: 0,
-	// 				brand: 'None',
-	// 				allProducts: []
-	// 			}
-	// 		}
-	// 	}
-
-	// await pool.query(SQL`
-	// 	WITH prod_req AS (
-	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 		FROM products p
-	// 		INNER JOIN brands b ON p.brandId = b.id
-	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-	// 		INNER JOIN sizes s ON p.id = s.id
-	// 		WHERE p.name=${productReq}
-	// 	),
-	// 	similar_prod AS (
-	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 		FROM products p
-	// 		INNER JOIN brands b ON p.brandId = b.id
-	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-	// 		INNER JOIN sizes s ON p.id = s.id
-	// 		WHERE p.modelId = (SELECT modelId FROM prod_req) AND p.name <> (SELECT name FROM prod_req)
-	// 	)
-	// 	SELECT pr.* FROM prod_req pr UNION ALL SELECT ps.* FROM similar_prod ps;`)
-	// 	.then((response: any) => {
-	// 		if (response.rows.length !== 0) {
-	// 			rawQueryResult = response.rows
-	// 			productRequested = rawQueryResult.filter((res: any) => res.name === productReq).length === 1 ? rawQueryResult.filter((res: any) => res.name === productReq)[0] : {}
-	// 			similarProducts = rawQueryResult.filter((res: any) => res.name !== productReq).length !== 0 ? rawQueryResult.filter((res: any) => res.name !== productReq) : []
-	// 			productQueryResult = {
-	// 				productReq: productRequested,
-	// 				similarProducts: similarProducts
-	// 			}
-	// 		}
-	// 		else {
-	// 			productQueryResult = { productReq: [], similarProducts: [] }
-	// 		}
-	// 	})
-	// 	.catch((err: any) => {
-	// 		console.log(err)
-	// 		return response.status(404).json({
-	// 			error: `Unable to retrieve product: ${productReq} from database`
-	// 		})
-	// 	})
-
-	// return productQueryResult === null ? response.status(404).json({ error: `Unable to retrieve product: ${productReq} from database` }): response.status(200).json(productQueryResult)
 
 })
 
@@ -264,6 +149,86 @@ router.post('/model', async (request: Request, response: Response) => {
 			})
 		})
 	return modelQueryResult === null ? response.status(404).json({ error: `Unable to retrieve model: ${modelReq} from database` }): response.status(200).json(modelQueryResult)
+	// const body = request.body
+	// const modelReq: string = body.model
+	// // const modelQueryResult: any = {
+	// // 	modelReq: {
+	// // 		id: null,
+	// // 		name: null,
+	// // 		brandId: null,
+	// // 		brand: null,
+	// // 		allProducts: []
+	// // 	}
+	// // }
+	// let modelQueryResult: any
+	// let rawQueryResult: any
+	// let modelExists = true
+	// if (!modelReq || modelReq === null || modelReq === undefined || modelReq.length === 0) {
+	// 	return response.status(404).json({
+	// 		message: `No model specified: ${modelReq}`
+	// 	})
+	// }
+
+	// await pool.query(SQL`
+	// 	SELECT 1 WHERE EXISTS
+	// 		(SELECT * FROM models m
+	// 			INNER JOIN products p
+	// 			ON m.id = p.modelId
+	// 			WHERE m.name = ${modelReq})`)
+	// 	.then((response: any) => {
+	// 		if (response.rows.length === 0) {
+	// 			modelExists = !modelExists
+	// 		}
+	// 	})
+	// if (!modelExists) {
+	// 	return response.status(400).json({
+	// 		error: `There is no model that exists with that name: ${modelReq}`
+	// 	})
+	// }
+
+	// await pool.query(SQL`
+	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM models m
+	// 		INNER JOIN brands b ON m.brandId = b.id
+	// 		INNER JOIN products p ON m.id = p.modelId AND b.id = p.brandId
+	// 		INNER JOIN sizes s ON s.id = p.id
+	// 		WHERE m.name=${modelReq} `)
+	// 	.then((response: any) => {
+	// 		console.log(response.rows)
+	// 		console.log(response)
+	// 		// modelQueryResult.modelReq = buildModelOutput(response.rows)
+	// 		if (response.rows.length !== 0) {
+	// 			rawQueryResult = response.rows
+	// 			modelQueryResult = {
+	// 				modelReq: {
+	// 					id: rawQueryResult[0].modelid,
+	// 					name: rawQueryResult[0].modelname,
+	// 					brandId: rawQueryResult[0].brandid,
+	// 					brand: rawQueryResult[0].brand,
+	// 					allProducts: rawQueryResult
+	// 				}
+	// 			}
+	// 			// modelQueryResult.modelReq = buildModelOutput(response.rows)
+	// 		}
+	// 		else {
+	// 			modelQueryResult = {
+	// 				modelReq: {
+	// 					id: 0,
+	// 					name: 'None',
+	// 					brandId: 0,
+	// 					brand: 'None',
+	// 					allProducts: []
+	// 				}
+	// 			}
+	// 		}
+	// 	})
+	// 	.catch((err: any) => {
+	// 		console.log(err)
+	// 		return response.status(404).json({
+	// 			error: `Unable to retrieve model: ${modelReq} from database`
+	// 		})
+	// 	})
+	// return modelQueryResult !== null ? response.status(404).json({ error: `Unable to retrieve model: ${modelReq} from database` }): response.status(200).json(modelQueryResult)
 })
 
 router.post('/product', async (request: Request, response: Response) => {
