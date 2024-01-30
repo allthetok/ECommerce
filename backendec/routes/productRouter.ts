@@ -6,37 +6,54 @@ import express, { NextFunction, Request, Response, raw } from 'express'
 import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
 import { Brands, IndProduct } from '../helpers/betypes'
+import { brandMap } from '../helpers/enumMap'
 
 const router = express.Router()
 
 router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
-	const brandReq: string[] = body.brand
+	let brandReq: string[] = body.brand
 	let productQueryResult: any
 	let rawQueryResult: any
 	let brandExists = true
 	let productRequested: any
 	let similarProducts: any[]
+	let formattedInStatement: string = ''
 	if (!brandReq || brandReq === null || brandReq === undefined || brandReq.length === 0) {
 		return response.status(404).json({
 			message: `No brand specified: ${brandReq}`
 		})
 	}
 
-	// await pool.query(SQL`
-	// 	SELECT 1 WHERE EXISTS 
-	// 		(SELECT * FROM brands b 
-	// 			WHERE b.name = ${brandReq})`)
-	// 	.then((response: any) => {
-	// 		if (response.rows.length === 0) {
-	// 			productExists = !productExists
-	// 		}
-	// 	})
-	// if (!productExists) {
-	// 	return response.status(400).json({
-	// 		error: `There is no product that exists with that name: ${productReq}`
-	// 	})
-	// }
+	if (brandReq.length === 1 && (brandReq.join('') === 'all' || brandReq.join('') === '')) {
+		brandReq = []
+		for (const key of brandMap.keys()) {
+			brandReq.push(key)
+		}
+	}
+
+	formattedInStatement=`(${brandReq.map(i => `'${i}'`).join(',')})`
+
+	console.log(formattedInStatement)
+	await pool.query(SQL`
+			SELECT 1 WHERE EXISTS 
+				(SELECT * FROM brands b
+					INNER JOIN models m
+					ON b.id = m.brandId
+					INNER JOIN products p 
+					ON m.id = p.modelId AND b.id = p.brandId
+					WHERE b.name IN${formattedInStatement})`)
+		.then((response: any) => {
+			if (response.rows.length === 0) {
+				brandExists = !brandExists
+			}
+		})
+	if (!brandExists) {
+		return response.status(400).json({
+			error: `There is no brand that exists with that name: ${brandReq}`
+		})
+	}
+	return response.status(200).json({ message: 'hello' })
 
 	// await pool.query(SQL`
 	// 	WITH prod_req AS (
