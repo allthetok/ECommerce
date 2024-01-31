@@ -317,10 +317,11 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 		return response.status(200).json(searchQueryResult)
 	}
 
+
 	await pool.query(SQL`
 		SELECT 1 WHERE EXISTS 
 			(SELECT * FROM products p 
-				WHERE p.name LIKE `.append(`'%${searchterm}%' )`))
+				WHERE LOWER(p.name) LIKE `.append(`'%${searchterm.toLowerCase()}%' )`))
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				productExists = !productExists
@@ -336,7 +337,7 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 			INNER JOIN brands b ON p.brandId = b.id
 			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
 			INNER JOIN sizes s ON p.id = s.id
-			WHERE p.name LIKE `.append(`'%${searchterm}%'`))
+			WHERE LOWER(p.name) LIKE `.append(`'%${searchterm.toLowerCase()}%'`))
 		.then((response: any) => {
 			if (response.rows.length !== 0) {
 				rawQueryResult = response.rows
