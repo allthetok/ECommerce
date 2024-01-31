@@ -7,7 +7,7 @@ import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
 import { Brands, IndProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
-import { buildBrandOutput, buildModelOutput, formatInStatement } from '../helpers/requests'
+import { buildBrandOutput, buildModelOutput, formatInStatement, formatSQLColToProduct } from '../helpers/requests'
 
 const router = express.Router()
 
@@ -17,7 +17,6 @@ router.post('/brand', async (request: Request, response: Response) => {
 	let brandQueryResult: any = {
 		brandReq: []
 	}
-	let rawQueryResult: any
 	let brandExists = true
 	let brandInStatement: string = ''
 	if (!brandReq || brandReq === null || brandReq === undefined || brandReq.length === 0) {
@@ -126,7 +125,7 @@ router.post('/model', async (request: Request, response: Response) => {
 						name: rawQueryResult[0].modelname,
 						brandId: rawQueryResult[0].brandid,
 						brand: rawQueryResult[0].brand,
-						allProducts: rawQueryResult
+						allProducts: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd))
 					}
 				}
 			}
@@ -282,8 +281,8 @@ router.post('/product', async (request: Request, response: Response) => {
 		.then((response: any) => {
 			if (response.rows.length !== 0) {
 				rawQueryResult = response.rows
-				productRequested = rawQueryResult.filter((res: any) => res.name === productReq).length === 1 ? rawQueryResult.filter((res: any) => res.name === productReq)[0] : {}
-				similarProducts = rawQueryResult.filter((res: any) => res.name !== productReq).length !== 0 ? rawQueryResult.filter((res: any) => res.name !== productReq) : []
+				productRequested = rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name === productReq).length === 1 ? rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name === productReq)[0] : {}
+				similarProducts = rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name !== productReq).length !== 0 ? rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name !== productReq) : []
 				productQueryResult = {
 					productReq: productRequested,
 					similarProducts: similarProducts
@@ -317,7 +316,6 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 		return response.status(200).json(searchQueryResult)
 	}
 
-
 	await pool.query(SQL`
 		SELECT 1 WHERE EXISTS 
 			(SELECT * FROM products p 
@@ -342,7 +340,7 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 			if (response.rows.length !== 0) {
 				rawQueryResult = response.rows
 				searchQueryResult = {
-					products: response.rows
+					products: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd))
 				}
 			}
 		})

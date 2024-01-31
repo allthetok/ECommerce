@@ -41,4 +41,18 @@ interface Models {
 	allProducts: IndProduct[]
 }
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes }
+interface SqlProduct {
+	id: number,
+	brand: string,
+	brandid: number,
+	modelid: number,
+	modelname: string,
+	name: string,
+	releasedate: Date | string,
+	colors: Colors[]
+	price: number,
+	description: string,
+	sizes: ColorSizes[]
+}
+
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct }

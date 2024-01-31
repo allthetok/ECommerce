@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import { Request, Response, NextFunction } from 'express'
+import { IndProduct, SqlProduct } from './betypes'
 require('dotenv').config()
 
 const requestLogger = (request: Request, response: Response, next: NextFunction): void => {
@@ -47,16 +48,16 @@ const buildBrandOutput = (rawQueryResult: any[]) => {
 	}
 
 	for (const [key, value] of modelMap.entries()) {
-		const filteredRows = rawQueryResult.filter((indRow: any) => indRow.brand === key)
+		const filteredRows = rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((indRow: any) => indRow.brand === key)
 		const brandEl: any = {
-			id: filteredRows[0].brandid,
+			id: filteredRows[0].brandId,
 			name: key,
 			allModels: []
 		}
 		value.map((modelName: string) => {
-			const modelFilteredRows = filteredRows.filter((indRow: any) => indRow.modelname === modelName)
+			const modelFilteredRows = filteredRows.filter((indRow: any) => indRow.modelName === modelName)
 			const modelEl: any = {
-				id: filteredRows[0].modelid,
+				id: filteredRows[0].modelId,
 				name: modelName,
 				brandId: brandEl.id,
 				brand: key,
@@ -85,4 +86,20 @@ const buildModelOutput = (rawQueryResult: any[]) => {
 	}
 }
 
-export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput }
+const formatSQLColToProduct: (input: any) => IndProduct = (input: any) => {
+	return {
+		id: input.id,
+		brand: input.brand,
+		brandId: input.brandid,
+		modelId: input.modelid,
+		modelName: input.modelname,
+		name: input.name,
+		releaseDate: input.releasedate,
+		colors: input.colors,
+		price: input.price,
+		description: input.description,
+		sizes: input.sizes
+	}
+}
+
+export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput, formatSQLColToProduct }
