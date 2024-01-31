@@ -307,68 +307,52 @@ router.post('/product', async (request: Request, response: Response) => {
 router.post('/productSearch', async (request: Request, response: Response) => {
 	const body = request.body
 	const searchterm: string = body.searchterm
-	let searchQueryResult: any
+	let searchQueryResult: any = {
+		products: []
+	}
 	let rawQueryResult: any
 	let productExists = true
-	let productRequested: any
 
 	if (!searchterm || searchterm === null || searchterm === undefined || searchterm === '') {
-		return response.status(200).json({ products: [] })
+		return response.status(200).json(searchQueryResult)
 	}
 
 	await pool.query(SQL`
 		SELECT 1 WHERE EXISTS 
 			(SELECT * FROM products p 
-				WHERE p.name LIKE`.append(`'%${searchterm}%' )`))
+				WHERE p.name LIKE `.append(`'%${searchterm}%' )`))
 		.then((response: any) => {
 			if (response.rows.length === 0) {
 				productExists = !productExists
 			}
 		})
 	if (!productExists) {
-		return response.status(200).json({ products: [] })
+		return response.status(200).json(searchQueryResult)
 	}
 
-	// await pool.query(SQL`
-	// 	WITH prod_req AS (
-	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 		FROM products p
-	// 		INNER JOIN brands b ON p.brandId = b.id
-	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-	// 		INNER JOIN sizes s ON p.id = s.id
-	// 		WHERE p.name=${productReq}
-	// 	),
-	// 	similar_prod AS (
-	// 		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 		FROM products p
-	// 		INNER JOIN brands b ON p.brandId = b.id
-	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-	// 		INNER JOIN sizes s ON p.id = s.id
-	// 		WHERE p.modelId = (SELECT modelId FROM prod_req) AND p.name <> (SELECT name FROM prod_req)
-	// 	)
-	// 	SELECT pr.* FROM prod_req pr UNION ALL SELECT ps.* FROM similar_prod ps;`)
-	// 	.then((response: any) => {
-	// 		if (response.rows.length !== 0) {
-	// 			rawQueryResult = response.rows
-	// 			productRequested = rawQueryResult.filter((res: any) => res.name === productReq).length === 1 ? rawQueryResult.filter((res: any) => res.name === productReq)[0] : {}
-	// 			similarProducts = rawQueryResult.filter((res: any) => res.name !== productReq).length !== 0 ? rawQueryResult.filter((res: any) => res.name !== productReq) : []
-	// 			productQueryResult = {
-	// 				productReq: productRequested,
-	// 				similarProducts: similarProducts
-	// 			}
-	// 		}
-	// 		else {
-	// 			productQueryResult = { productReq: [], similarProducts: [] }
-	// 		}
-	// 	})
-	// 	.catch((err: any) => {
-	// 		console.log(err)
-	// 		return response.status(404).json({
-	// 			error: `Unable to retrieve product: ${productReq} from database`
-	// 		})
-	// 	})
+	await pool.query(SQL`
+		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, p.releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+			FROM products p
+			INNER JOIN brands b ON p.brandId = b.id
+			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+			INNER JOIN sizes s ON p.id = s.id
+			WHERE p.name LIKE `.append(`'%${searchterm}%'`))
+		.then((response: any) => {
+			if (response.rows.length !== 0) {
+				rawQueryResult = response.rows
+				searchQueryResult = {
+					products: response.rows
+				}
+			}
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: `Unable to retrieve product which includes: ${searchterm} from database`
+			})
+		})
 
-	return searchQueryResult === null ? response.status(200).json({ products: [] }): response.status(200).json(productQueryResult)
+	return response.status(200).json(searchQueryResult)
 
 })
 
