@@ -55,4 +55,8 @@ interface SqlProduct {
 	sizes: ColorSizes[]
 }
 
+// interface BrandQueryResult {
+// 	brandReq: any[]
+// }
+
 export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct }

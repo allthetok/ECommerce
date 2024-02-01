@@ -71,19 +71,49 @@ const buildBrandOutput = (rawQueryResult: any[]) => {
 }
 
 const buildModelOutput = (rawQueryResult: any[]) => {
-	return rawQueryResult.length > 0 ? {
-		id: rawQueryResult[0].modelid,
-		name: rawQueryResult[0].modelname,
-		brandId: rawQueryResult[0].brandid,
-		brand: rawQueryResult[0].brand,
-		allProducts: rawQueryResult
-	} : {
+	let modelReq: any = {
 		id: 0,
 		name: 'None',
 		brandId: 0,
 		brand: 'None',
 		allProducts: []
 	}
+	modelReq = rawQueryResult.length !== 0
+		? {
+			id: rawQueryResult[0].modelid,
+			name: rawQueryResult[0].modelname,
+			brandId: rawQueryResult[0].brandid,
+			brand: rawQueryResult[0].brand,
+			allProducts: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd))
+		} :
+		modelReq
+	return modelReq
+}
+
+const buildProductOutput = (rawQueryResult: any[], specProduct: string) => {
+	let productQueryResult: any = {
+		productReq: [],
+		similarProducts: []
+	}
+	productQueryResult = rawQueryResult.length !== 0
+		? {
+			productReq: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name === specProduct).length === 1 ? rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name === specProduct)[0] : {},
+			similarProducts: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name !== specProduct).length !== 0 ? rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd)).filter((res: any) => res.name !== specProduct) : []
+		} :
+		productQueryResult
+	return productQueryResult
+}
+
+const buildSearchOutput = (rawQueryResult: any[]) => {
+	let searchQueryResult: any = {
+		products: []
+	}
+	searchQueryResult = rawQueryResult.length !== 0
+		? {
+			products: rawQueryResult.map((indProd: any) => formatSQLColToProduct(indProd))
+		} :
+		searchQueryResult
+	return searchQueryResult
 }
 
 const formatSQLColToProduct: (input: any) => IndProduct = (input: any) => {
@@ -102,4 +132,4 @@ const formatSQLColToProduct: (input: any) => IndProduct = (input: any) => {
 	}
 }
 
-export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput, formatSQLColToProduct }
+export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct }

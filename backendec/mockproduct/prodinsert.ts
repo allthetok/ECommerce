@@ -768,7 +768,7 @@ const stanSmithBape = {
 	"colors": [
 		{
 			"color": "Core Black/Core Black/Gold Metallic",
-			"images": ["https://images.stockx.com/360/adidas-Stan-Smith-Bape-30th-Anniversary-Black/images/adidas-Stan-Smith-Bape-30th-Anniversary-Black/Lv2/img01.jpg?fm=avif&auto=compress&w=576&dpr=1&updated_at=1700666677&h=384&q=57",
+			"images": ["https://images.stockx.com/360/adidas-Stan-Smith-Bape-30th-Anniversary-Black/Images/adidas-Stan-Smith-Bape-30th-Anniversary-Black/Lv2/img01.jpg?fm=avif&auto=compress&w=576&dpr=1&updated_at=1700666677&h=384&q=57",
 				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi3uSqfo1qpUwDD8VNuyAS8SxDZQRBK3NRnw&usqp=CAU",
 				"https://image.goat.com/transform/v1/attachments/product_template_pictures/images/095/038/922/original/IG1116.png.png?action=crop&width=750"]
 		}
