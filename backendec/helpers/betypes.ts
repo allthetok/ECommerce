@@ -55,8 +55,22 @@ interface SqlProduct {
 	sizes: ColorSizes[]
 }
 
-// interface BrandQueryResult {
-// 	brandReq: any[]
-// }
+interface BrandQueryResult {
+	brandReq: Brands[]
+}
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct }
+interface ModelQueryResult {
+	modelReq: Models
+}
+
+interface ProductQueryResult {
+	productReq: IndProduct,
+	similarProducts: IndProduct[]
+}
+
+interface SearchQueryResult {
+	products: IndProduct[]
+}
+
+
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult }

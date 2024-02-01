@@ -5,7 +5,7 @@ require('dotenv').config()
 import express, { NextFunction, Request, Response, raw } from 'express'
 import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
-import { Brands, IndProduct } from '../helpers/betypes'
+import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductQueryResult, SearchQueryResult, SqlProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
 import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatInStatement, formatSQLColToProduct } from '../helpers/requests'
 
@@ -14,9 +14,10 @@ const router = express.Router()
 router.post('/brand', async (request: Request, response: Response) => {
 	const body = request.body
 	let brandReq: string[] = body.brand
-	let brandQueryResult: any = {
+	let brandQueryResult: BrandQueryResult = {
 		brandReq: []
 	}
+	let rawQueryResult: SqlProduct[]
 	let brandExists = true
 	let brandInStatement: string = ''
 
@@ -64,9 +65,11 @@ router.post('/brand', async (request: Request, response: Response) => {
 			INNER JOIN sizes s ON p.id = s.id
 			WHERE b.name IN`.append(`(${brandInStatement})`))
 		.then((response: any) => {
-			if (response.rows.length !== 0) {
-				brandQueryResult = buildBrandOutput(response.rows)
-			}
+			rawQueryResult = response.rows
+			brandQueryResult = buildBrandOutput(response.rows)
+			// if (response.rows.length !== 0) {
+			// 	brandQueryResult = buildBrandOutput(response.rows)
+			// }
 		})
 		.catch((err: any) => {
 			console.log(err)
@@ -82,11 +85,11 @@ router.post('/brand', async (request: Request, response: Response) => {
 router.post('/model', async (request: Request, response: Response) => {
 	const body = request.body
 	const modelReq: string = body.model
-	const modelQueryResult: any = {
+	const modelQueryResult: ModelQueryResult = {
 		modelReq: null
 	}
 
-	let rawQueryResult: any
+	let rawQueryResult: SqlProduct[]
 	let modelExists = true
 
 	if (!modelReq || modelReq === null || modelReq === undefined || modelReq.length === 0) {
@@ -135,8 +138,8 @@ router.post('/model', async (request: Request, response: Response) => {
 router.post('/product', async (request: Request, response: Response) => {
 	const body = request.body
 	const productReq: string = body.product
-	let productQueryResult: any
-	let rawQueryResult: any
+	let productQueryResult: ProductQueryResult
+	let rawQueryResult: SqlProduct[]
 	let productExists = true
 
 	if (!productReq || productReq === null || productReq === undefined || productReq === '') {
@@ -196,10 +199,10 @@ router.post('/product', async (request: Request, response: Response) => {
 router.post('/productSearch', async (request: Request, response: Response) => {
 	const body = request.body
 	const searchterm: string = body.searchterm
-	let searchQueryResult: any = {
+	let searchQueryResult: SearchQueryResult = {
 		products: []
 	}
-	let rawQueryResult: any
+	let rawQueryResult: SqlProduct[]
 	let productExists = true
 
 	if (!searchterm || searchterm === null || searchterm === undefined || searchterm === '') {
@@ -210,7 +213,7 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 		SELECT 1 WHERE EXISTS 
 			(SELECT * FROM products p 
 				WHERE LOWER(p.name) LIKE `.append(`'%${searchterm.toLowerCase()}%' )`))
-		.then((response: any) => {
+		.then((response) => {
 			if (response.rows.length === 0) {
 				productExists = !productExists
 			}
