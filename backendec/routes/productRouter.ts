@@ -246,6 +246,10 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 router.patch('/product', async (request: Request, response: Response) => {
 	const body = request.body
 	const productsArr: ProductPatch[] = body.selectedProducts
+	let productExists: boolean = true
+	let unableProcess: boolean = false
+	let rawQueryResult: any
+	let prodPatchQueryResult: any
 
 	if (productsArr.length === 0 || !productsArr || productsArr === undefined) {
 		return response.status(404).json({
@@ -260,6 +264,145 @@ router.patch('/product', async (request: Request, response: Response) => {
 			})
 		}
 	}
+
+	for (const indProd of productsArr) {
+		await pool.query(SQL`
+		SELECT 1 WHERE EXISTS 
+			(SELECT * FROM products p 
+				INNER JOIN sizes s ON p.id = s.id
+				WHERE p.name = ${indProd.name} 
+				AND p.id = ${indProd.id} 
+				)`)
+			.then((response: any) => {
+				if (response.rows.length === 0) {
+					productExists = !productExists
+				}
+			})
+			.catch((err: any) => {
+				console.log(err)
+				return response.status(400).json({
+					error: 'Unable to retrieve and patch selected product'
+				})
+			})
+		if (!productExists) {
+			return response.status(400).json({
+				error: 'Unable to retrieve and patch selected product'
+			})
+		}
+	}
+
+	for (const indProd of productsArr) {
+		let toUpdateArr: any[]
+		await pool.query(SQL`
+			SELECT s.colSize AS sizes, s.id
+				FROM sizes s
+				INNER JOIN products p ON s.id = p.id
+				WHERE p.name = ${indProd.name} AND p.id = ${indProd.id}`)
+			.then((response: any) => {
+				rawQueryResult = response.rows[0]
+				const currentSizes = rawQueryResult.sizes
+				if (currentSizes.filter((indSize: any) => indSize.color === indProd.color)[0].sizes.filter((indArr: any) => indArr.size === indProd.size)[0].amount <= 0) {
+					unableProcess = !unableProcess
+				}
+				else {
+					toUpdateArr = currentSizes.map((indSize: any) => {
+						const originalSize = indSize
+						if (indSize.color === indProd.color) {
+							const originalSizes = originalSize.sizes
+							const updateSizes = originalSizes.map((indInner: any) => {
+								if (indInner.size === indProd.size) {
+									indInner.amount -= 1
+								}
+								return { indInner }
+							})
+							return {
+								color: indSize.color,
+								sizes: updateSizes
+							}
+						}
+						else {
+							return { indSize }
+						}
+					})
+				}
+			})
+			.catch((err: any) => {
+				console.log(err)
+				return response.status(400).json({
+					error: 'Unable to retrieve and patch selected product'
+				})
+			})
+		if (unableProcess) {
+			return response.status(400).json({
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+			})
+		}
+		await pool.query(SQL`
+			UPDATE sizes 
+			SET colSize=${toUpdateArr}
+			WHERE id=${indProd.id}
+			RETURNING * `)
+			.then((response: any) => {
+				rawQueryResult = response.rows
+				if (rawQueryResult.length === 0) {
+					unableProcess = !unableProcess
+				}
+			})
+			.catch((err: any) => {
+				console.log(err)
+				return response.status(400).json({
+					error: 'Unable to retrieve and patch selected product'
+				})
+			})
+		if (unableProcess) {
+			return response.status(400).json({
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+			})
+		}
+	}
+
+	await pool.query(SQL`
+		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+			FROM products p
+			INNER JOIN brands b ON p.brandId = b.id
+			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+			INNER JOIN sizes s ON p.id = s.id
+			WHERE p.name IN`.append(`(${productsArr.map((indProd: ProductPatch) => indProd.name)})`).append(`AND p.id IN(${productsArr.map((indProd: ProductPatch) => indProd.id)})`))
+		.then((response: any) => {
+			rawQueryResult = response.rows
+			prodPatchQueryResult = buildSearchOutput(rawQueryResult)
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: 'Unable to retrieve patched results from database'
+			})
+		})
+
+	return prodPatchQueryResult === null ? response.status(404).json({ error: 'Unable to retrieve patched results from database' }): response.status(200).json(prodPatchQueryResult)
+
+
+
+	// brandInStatement = formatInStatement(brandReq)
+
+	// await pool.query(SQL`
+	// 	SELECT 1 WHERE EXISTS
+	// 		(SELECT * FROM brands b
+	// 			INNER JOIN models m
+	// 			ON b.id = m.brandId
+	// 			INNER JOIN products p
+	// 			ON m.id = p.modelId AND b.id = p.brandId
+	// 			WHERE b.name IN`.append(`(${brandInStatement}) )`))
+	// 	.then((response: any) => {
+	// 		if (response.rows.length === 0) {
+	// 			brandExists = !brandExists
+	// 		}
+	// 	})
+	// if (!brandExists) {
+	// 	return response.status(400).json({
+	// 		error: `There is no brand that exists with that name: ${brandReq}`
+	// 	})
+	// }
 
 	// for (let i = 0; i < productsArr.length; i++) {
 	// 	if (!productsArr[i].name || productsArr[i].name === '' || !productsArr[i].id || !productsArr[i].color || productsArr[i].color === '' || !productsArr[i].size || productsArr[i].size === '') {

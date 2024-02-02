@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import { Request, Response, NextFunction } from 'express'
-import { BrandQueryResult, Brands, IndProduct, Models, ProductQueryResult, SearchQueryResult, SqlProduct } from './betypes'
+import { BrandQueryResult, Brands, IndProduct, Models, ProductPatch, ProductQueryResult, SearchQueryResult, SqlProduct } from './betypes'
 require('dotenv').config()
 
 const requestLogger = (request: Request, response: Response, next: NextFunction): void => {
@@ -147,6 +147,16 @@ const formatSQLColToProduct: (input: SqlProduct) => IndProduct = (input: SqlProd
 
 const mapQueryResult = (rawQueryResult: SqlProduct[]) => {
 	return rawQueryResult.map((indProd: SqlProduct) => formatSQLColToProduct(indProd))
+}
+
+const parsePatchArray = (products: ProductPatch[]) => {
+	const arrObject = {
+		names: products.map((indProd: ProductPatch) => indProd.name),
+		id: products.map((indProd: ProductPatch) => indProd.id),
+		colors: products.map((indProd: ProductPatch) => indProd.color),
+		sizes: products.map((indProd: ProductPatch) => indProd.size)
+	}
+	return arrObject
 }
 
 export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult }
