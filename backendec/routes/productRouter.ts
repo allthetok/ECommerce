@@ -5,7 +5,7 @@ require('dotenv').config()
 import express, { NextFunction, Request, Response, raw } from 'express'
 import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
-import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductQueryResult, SearchQueryResult, SqlProduct } from '../helpers/betypes'
+import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductPatch, ProductQueryResult, SearchQueryResult, SqlProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
 import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatInStatement, formatSQLColToProduct } from '../helpers/requests'
 
@@ -241,6 +241,34 @@ router.post('/productSearch', async (request: Request, response: Response) => {
 		})
 
 	return response.status(200).json(searchQueryResult)
+})
+
+router.patch('/product', async (request: Request, response: Response) => {
+	const body = request.body
+	const productsArr: ProductPatch[] = body.selectedProducts
+
+	if (productsArr.length === 0 || !productsArr || productsArr === undefined) {
+		return response.status(404).json({
+			error: 'No products selected'
+		})
+	}
+
+	for (const indProd of productsArr) {
+		if (!indProd.name || indProd.name === '' || !indProd.id || !indProd.color || indProd.color === '' || !indProd.size || indProd.size === '') {
+			return response.status(404).json({
+				error: `Missing attribute for product: ${indProd.name}, check name, size, id, or color`
+			})
+		}
+	}
+
+	// for (let i = 0; i < productsArr.length; i++) {
+	// 	if (!productsArr[i].name || productsArr[i].name === '' || !productsArr[i].id || !productsArr[i].color || productsArr[i].color === '' || !productsArr[i].size || productsArr[i].size === '') {
+	// 		return response.status(404).json({
+	// 			error: `Missing attribute for product: ${productsArr[i].name}, check name, size, id, or color`
+	// 		})
+	// 	}
+	// }
+	return response.status(200).json({ Message: 'new value for sizes' })
 })
 
 // router.patch('/productImage', async (request: Request, response: Response) => {

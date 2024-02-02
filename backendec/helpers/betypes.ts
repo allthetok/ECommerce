@@ -72,5 +72,12 @@ interface SearchQueryResult {
 	products: IndProduct[]
 }
 
+interface ProductPatch {
+	name: string,
+	id: number,
+	color: string,
+	size: string
+}
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult }
+
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch }
