@@ -249,7 +249,7 @@ router.patch('/product', async (request: Request, response: Response) => {
 	let productExists: boolean = true
 	let unableProcess: boolean = false
 	let rawQueryResult: any
-	let prodPatchQueryResult: any
+	const prodPatchQueryResult: any[] = []
 
 	if (productsArr.length === 0 || !productsArr || productsArr === undefined) {
 		return response.status(404).json({
@@ -332,86 +332,62 @@ router.patch('/product', async (request: Request, response: Response) => {
 					error: 'Unable to retrieve and patch selected product'
 				})
 			})
-		if (unableProcess) {
-			return response.status(400).json({
-				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
-			})
-		}
-		await pool.query(SQL`
-			UPDATE sizes 
-			SET colSize=${toUpdateArr}
-			WHERE id=${indProd.id}
-			RETURNING * `)
-			.then((response: any) => {
-				rawQueryResult = response.rows
-				if (rawQueryResult.length === 0) {
-					unableProcess = !unableProcess
-				}
-			})
-			.catch((err: any) => {
-				console.log(err)
-				return response.status(400).json({
-					error: 'Unable to retrieve and patch selected product'
-				})
-			})
-		if (unableProcess) {
-			return response.status(400).json({
-				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
-			})
-		}
+		// if (unableProcess) {
+		// 	return response.status(400).json({
+		// 		error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+		// 	})
+		// }
+		// await pool.query(SQL`
+		// 	UPDATE sizes
+		// 	SET colSize=${toUpdateArr}
+		// 	WHERE id=${indProd.id}
+		// 	RETURNING * `)
+		// 	.then((response: any) => {
+		// 		rawQueryResult = response.rows
+		// 		if (rawQueryResult.length === 0) {
+		// 			unableProcess = !unableProcess
+		// 		}
+		// 	})
+		// 	.catch((err: any) => {
+		// 		console.log(err)
+		// 		return response.status(400).json({
+		// 			error: 'Unable to retrieve and patch selected product'
+		// 		})
+		// 	})
+		// if (unableProcess) {
+		// 	return response.status(400).json({
+		// 		error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+		// 	})
+		// }
+
+		prodPatchQueryResult.push(toUpdateArr)
 	}
 
-	await pool.query(SQL`
-		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-			FROM products p
-			INNER JOIN brands b ON p.brandId = b.id
-			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-			INNER JOIN sizes s ON p.id = s.id
-			WHERE p.name IN`.append(`(${productsArr.map((indProd: ProductPatch) => indProd.name)})`).append(`AND p.id IN(${productsArr.map((indProd: ProductPatch) => indProd.id)})`))
-		.then((response: any) => {
-			rawQueryResult = response.rows
-			prodPatchQueryResult = buildSearchOutput(rawQueryResult)
-		})
-		.catch((err: any) => {
-			console.log(err)
-			return response.status(404).json({
-				error: 'Unable to retrieve patched results from database'
-			})
-		})
-
-	return prodPatchQueryResult === null ? response.status(404).json({ error: 'Unable to retrieve patched results from database' }): response.status(200).json(prodPatchQueryResult)
-
-
-
-	// brandInStatement = formatInStatement(brandReq)
+	return response.status(200).json({
+		resOutput: prodPatchQueryResult
+	})
 
 	// await pool.query(SQL`
-	// 	SELECT 1 WHERE EXISTS
-	// 		(SELECT * FROM brands b
-	// 			INNER JOIN models m
-	// 			ON b.id = m.brandId
-	// 			INNER JOIN products p
-	// 			ON m.id = p.modelId AND b.id = p.brandId
-	// 			WHERE b.name IN`.append(`(${brandInStatement}) )`))
+	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+	// 		FROM products p
+	// 		INNER JOIN brands b ON p.brandId = b.id
+	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+	// 		INNER JOIN sizes s ON p.id = s.id
+	// 		WHERE p.name IN`.append(`(${productsArr.map((indProd: ProductPatch) => indProd.name)})`).append(`AND p.id IN(${productsArr.map((indProd: ProductPatch) => indProd.id)})`))
 	// 	.then((response: any) => {
-	// 		if (response.rows.length === 0) {
-	// 			brandExists = !brandExists
-	// 		}
+	// 		rawQueryResult = response.rows
+	// 		prodPatchQueryResult = buildSearchOutput(rawQueryResult)
 	// 	})
-	// if (!brandExists) {
-	// 	return response.status(400).json({
-	// 		error: `There is no brand that exists with that name: ${brandReq}`
-	// 	})
-	// }
-
-	// for (let i = 0; i < productsArr.length; i++) {
-	// 	if (!productsArr[i].name || productsArr[i].name === '' || !productsArr[i].id || !productsArr[i].color || productsArr[i].color === '' || !productsArr[i].size || productsArr[i].size === '') {
+	// 	.catch((err: any) => {
+	// 		console.log(err)
 	// 		return response.status(404).json({
-	// 			error: `Missing attribute for product: ${productsArr[i].name}, check name, size, id, or color`
+	// 			error: 'Unable to retrieve patched results from database'
 	// 		})
-	// 	}
-	// }
-	return response.status(200).json({ Message: 'new value for sizes' })
+	// 	})
+
+	// return prodPatchQueryResult === null ? response.status(404).json({ error: 'Unable to retrieve patched results from database' }): response.status(200).json(prodPatchQueryResult)
+
+
 })
 
 // router.patch('/productImage', async (request: Request, response: Response) => {
