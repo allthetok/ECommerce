@@ -7,7 +7,7 @@ import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
 import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductPatch, ProductQueryResult, SearchQueryResult, SqlProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
-import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatInStatement, formatSQLColToProduct } from '../helpers/requests'
+import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatStringInStatement, formatNumberInStatement, formatSQLColToProduct } from '../helpers/requests'
 
 const router = express.Router()
 
@@ -34,7 +34,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 		}
 	}
 
-	brandInStatement = formatInStatement(brandReq)
+	brandInStatement = formatStringInStatement(brandReq)
 
 	await pool.query(SQL`
 		SELECT 1 WHERE EXISTS 
@@ -249,7 +249,7 @@ router.patch('/product', async (request: Request, response: Response) => {
 	let productExists: boolean = true
 	let unableProcess: boolean = false
 	let rawQueryResult: any
-	const prodPatchQueryResult: any[] = []
+	let prodPatchQueryResult: any
 
 	if (productsArr.length === 0 || !productsArr || productsArr === undefined) {
 		return response.status(404).json({
@@ -301,29 +301,94 @@ router.patch('/product', async (request: Request, response: Response) => {
 			.then((response: any) => {
 				rawQueryResult = response.rows[0]
 				const currentSizes = rawQueryResult.sizes
-				if (currentSizes.filter((indSize: any) => indSize.color === indProd.color)[0].sizes.filter((indArr: any) => indArr.size === indProd.size)[0].amount <= 0) {
+
+				const filteredColorArray = currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color)
+
+				if (filteredColorArray.length === 0) {
 					unableProcess = !unableProcess
 				}
 				else {
-					toUpdateArr = currentSizes.map((indSize: any) => {
-						const originalSize = indSize
-						if (indSize.color === indProd.color) {
-							const originalSizes = originalSize.sizes
-							const updateSizes = originalSizes.map((indInner: any) => {
-								if (indInner.size === indProd.size) {
-									indInner.amount -= 1
+					const selectedSizeEl = filteredColorArray[0].sizes.filter((indSizeEl: any) => indSizeEl.size === indProd.size)
+					if (selectedSizeEl.length === 0) {
+						unableProcess = !unableProcess
+					}
+					else if (selectedSizeEl.length === 1 && selectedSizeEl[0].amount <= 0) {
+						unableProcess = !unableProcess
+					}
+					else {
+						toUpdateArr = currentSizes.map((indSize: any) => {
+							const originalSize = indSize
+							if (indSize.color === indProd.color) {
+								const originalSizes = originalSize.sizes
+								const updateSizes = originalSizes.map((indInner: any) => {
+									if (indInner.size === indProd.size) {
+										indInner.amount -= 1
+									}
+									return indInner
+								})
+								return {
+									color: indSize.color,
+									sizes: updateSizes
 								}
-								return { indInner }
-							})
-							return {
-								color: indSize.color,
-								sizes: updateSizes
 							}
-						}
-						else {
-							return { indSize }
-						}
-					})
+							else {
+								return indSize
+							}
+						})
+					}
+				}
+
+				// if (currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color).length === 1 && currentSizes) {
+
+				// }
+
+				// unableProcess = currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color).length === 0
+				// if (currentSizes.filter((indSize: any) => indSize.color === indProd.color)[0].sizes.filter((indArr: any) => indArr.size === indProd.size)[0].amount <= 0) {
+				// 	unableProcess = !unableProcess
+				// }
+				// else {
+				// 	// toUpdateArr = currentSizes.map((indSize: any) => {
+				// 	// 	const originalSize = indSize
+				// 	// 	if (indSize.color === indProd.color) {
+				// 	// 		const originalSizes = originalSize.sizes
+				// 	// 		const updateSizes = originalSizes.map((indInner: any) => {
+				// 	// 			if (indInner.size === indProd.size) {
+				// 	// 				indInner.amount -= 1
+				// 	// 			}
+				// 	// 			return indInner
+				// 	// 		})
+				// 	// 		return {
+				// 	// 			color: indSize.color,
+				// 	// 			sizes: updateSizes
+				// 	// 		}
+				// 	// 	}
+				// 	// 	else {
+				// 	// 		return indSize
+				// 	// 	}
+				// 	// })
+				// 	// console.log(toUpdateArr)
+				// }
+			})
+			.catch((err: any) => {
+				console.log(err)
+				return response.status(400).json({
+					error: 'Unable to retrieve and patch selected product'
+				})
+			})
+		if (unableProcess) {
+			return response.status(400).json({
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+			})
+		}
+		await pool.query(SQL`
+			UPDATE sizes
+			SET colSize=${toUpdateArr}
+			WHERE id=${indProd.id}
+			RETURNING * `)
+			.then((response: any) => {
+				rawQueryResult = response.rows
+				if (rawQueryResult.length === 0) {
+					unableProcess = !unableProcess
 				}
 			})
 			.catch((err: any) => {
@@ -332,61 +397,33 @@ router.patch('/product', async (request: Request, response: Response) => {
 					error: 'Unable to retrieve and patch selected product'
 				})
 			})
-		// if (unableProcess) {
-		// 	return response.status(400).json({
-		// 		error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
-		// 	})
-		// }
-		// await pool.query(SQL`
-		// 	UPDATE sizes
-		// 	SET colSize=${toUpdateArr}
-		// 	WHERE id=${indProd.id}
-		// 	RETURNING * `)
-		// 	.then((response: any) => {
-		// 		rawQueryResult = response.rows
-		// 		if (rawQueryResult.length === 0) {
-		// 			unableProcess = !unableProcess
-		// 		}
-		// 	})
-		// 	.catch((err: any) => {
-		// 		console.log(err)
-		// 		return response.status(400).json({
-		// 			error: 'Unable to retrieve and patch selected product'
-		// 		})
-		// 	})
-		// if (unableProcess) {
-		// 	return response.status(400).json({
-		// 		error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
-		// 	})
-		// }
+		if (unableProcess) {
+			return response.status(400).json({
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+			})
+		}
 
-		prodPatchQueryResult.push(toUpdateArr)
 	}
 
-	return response.status(200).json({
-		resOutput: prodPatchQueryResult
-	})
+	await pool.query(SQL`
+		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+			FROM products p
+			INNER JOIN brands b ON p.brandId = b.id
+			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+			INNER JOIN sizes s ON p.id = s.id
+			WHERE p.name IN`.append(`(${formatStringInStatement(productsArr.map((indProd: ProductPatch) => indProd.name))})`).append(`AND p.id IN(${formatNumberInStatement(productsArr.map((indProd: ProductPatch) => indProd.id))})`))
+		.then((response: any) => {
+			rawQueryResult = response.rows
+			prodPatchQueryResult = buildSearchOutput(rawQueryResult)
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: 'Unable to retrieve patched results from database'
+			})
+		})
 
-	// await pool.query(SQL`
-	// 	SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
-	// 		FROM products p
-	// 		INNER JOIN brands b ON p.brandId = b.id
-	// 		INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
-	// 		INNER JOIN sizes s ON p.id = s.id
-	// 		WHERE p.name IN`.append(`(${productsArr.map((indProd: ProductPatch) => indProd.name)})`).append(`AND p.id IN(${productsArr.map((indProd: ProductPatch) => indProd.id)})`))
-	// 	.then((response: any) => {
-	// 		rawQueryResult = response.rows
-	// 		prodPatchQueryResult = buildSearchOutput(rawQueryResult)
-	// 	})
-	// 	.catch((err: any) => {
-	// 		console.log(err)
-	// 		return response.status(404).json({
-	// 			error: 'Unable to retrieve patched results from database'
-	// 		})
-	// 	})
-
-	// return prodPatchQueryResult === null ? response.status(404).json({ error: 'Unable to retrieve patched results from database' }): response.status(200).json(prodPatchQueryResult)
-
+	return prodPatchQueryResult === null ? response.status(404).json({ error: 'Unable to retrieve patched results from database' }): response.status(200).json(prodPatchQueryResult)
 
 })
 

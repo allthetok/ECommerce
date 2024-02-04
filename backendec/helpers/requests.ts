@@ -20,7 +20,9 @@ const corsOptions = {
 	optionSuccessStatus: 200
 }
 
-const formatInStatement = (input: string[]) => `${input.map((c: string) => `'${c}'`).join(',')}`
+const formatStringInStatement = (input: string[]) => `${input.map((c: string) => `'${c}'`).join(',')}`
+
+const formatNumberInStatement = (input: number[]) => `${input.map((int: number) => `${int}`).join(',')}`
 
 const buildBrandOutput = (rawQueryResult: SqlProduct[]) => {
 	const brandQueryResult: BrandQueryResult = {
@@ -159,4 +161,4 @@ const parsePatchArray = (products: ProductPatch[]) => {
 	return arrObject
 }
 
-export { requestLogger, corsOptions, formatInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult }
+export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult }
