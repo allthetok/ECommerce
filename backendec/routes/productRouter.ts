@@ -51,7 +51,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 		})
 	if (!brandExists) {
 		return response.status(400).json({
-			error: `There is no brand that exists with that name: ${brandReq}`
+			error: `A brand within header: ${brandReq.join(',')} does not exist in database`
 		})
 	}
 
@@ -66,10 +66,7 @@ router.post('/brand', async (request: Request, response: Response) => {
 			WHERE b.name IN`.append(`(${brandInStatement})`))
 		.then((response: any) => {
 			rawQueryResult = response.rows
-			brandQueryResult = buildBrandOutput(response.rows)
-			// if (response.rows.length !== 0) {
-			// 	brandQueryResult = buildBrandOutput(response.rows)
-			// }
+			brandQueryResult = buildBrandOutput(rawQueryResult)
 		})
 		.catch((err: any) => {
 			console.log(err)
