@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import { Request, Response, NextFunction } from 'express'
-import { BrandQueryResult, Brands, IndProduct, Models, ProductPatch, ProductQueryResult, SearchQueryResult, SqlProduct } from './betypes'
+import { BrandQueryResult, Brands, ColorSizes, IndProduct, Models, ProductPatch, ProductQueryResult, ProductSizes, SearchQueryResult, SizesPatch, SqlProduct } from './betypes'
 require('dotenv').config()
 
 const requestLogger = (request: Request, response: Response, next: NextFunction): void => {
@@ -161,4 +161,57 @@ const parsePatchArray = (products: ProductPatch[]) => {
 	return arrObject
 }
 
-export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult }
+const updateSizesArray = (rawQueryResult: SizesPatch, colorSelect: string, sizeSelect: string) => {
+	const prePatchSizes = rawQueryResult.sizes
+	const patchResult: { unableProcess: boolean, updateSizesArr: ColorSizes[] } = {
+		unableProcess: false,
+		updateSizesArr: rawQueryResult.sizes
+	}
+	const toPatchColor = prePatchSizes.filter((indColorSize: ColorSizes) => indColorSize.color === colorSelect)
+
+	if (toPatchColor.length === 0) {
+		return {
+			...patchResult,
+			unableProcess: !patchResult.unableProcess
+		}
+	}
+
+	const selectedSize = toPatchColor[0].sizes.filter((indSize: ProductSizes) => indSize.size === sizeSelect)
+	if (selectedSize.length === 0) {
+		return {
+			...patchResult,
+			unableProcess: !patchResult.unableProcess
+		}
+	}
+	else if (selectedSize.length === 1 && selectedSize[0].amount <= 0) {
+		return {
+			...patchResult,
+			unableProcess: !patchResult.unableProcess
+		}
+	}
+	else {
+		const updatedSize = patchResult.updateSizesArr.map((indColorSize: ColorSizes) => {
+			if (indColorSize.color !== colorSelect) {
+				return indColorSize
+			}
+			else {
+				const toPatchColorSize = indColorSize.sizes.map((indSize: ProductSizes) => {
+					if (indSize.size === sizeSelect) {
+						indSize.amount -= 1
+					}
+					return indSize
+				})
+				return {
+					color: indColorSize.color,
+					sizes: toPatchColorSize
+				}
+			}
+		})
+		return {
+			...patchResult,
+			updateSizesArr: updatedSize
+		}
+	}
+}
+
+export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult, updateSizesArray }

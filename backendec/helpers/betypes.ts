@@ -79,5 +79,11 @@ interface ProductPatch {
 	size: string
 }
 
+interface SizesPatch {
+	sizes: ColorSizes[],
+	id: number
+}
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch }
+
+
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type ProductSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch, type SizesPatch }

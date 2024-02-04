@@ -5,9 +5,9 @@ require('dotenv').config()
 import express, { NextFunction, Request, Response, raw } from 'express'
 import SQL from 'sql-template-strings'
 import { pool } from '../src/db'
-import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductPatch, ProductQueryResult, SearchQueryResult, SqlProduct } from '../helpers/betypes'
+import { BrandQueryResult, Brands, IndProduct, ModelQueryResult, ProductPatch, ProductQueryResult, SearchQueryResult, SizesPatch, SqlProduct } from '../helpers/betypes'
 import { brandMap } from '../helpers/enumMap'
-import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatStringInStatement, formatNumberInStatement, formatSQLColToProduct } from '../helpers/requests'
+import { buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatStringInStatement, formatNumberInStatement, formatSQLColToProduct, updateSizesArray } from '../helpers/requests'
 
 const router = express.Router()
 
@@ -248,7 +248,8 @@ router.patch('/product', async (request: Request, response: Response) => {
 	const productsArr: ProductPatch[] = body.selectedProducts
 	let productExists: boolean = true
 	let unableProcess: boolean = false
-	let rawQueryResult: any
+	let rawQueryResult: SizesPatch
+	let rawProductQueryResult: SqlProduct[]
 	let prodPatchQueryResult: any
 
 	if (productsArr.length === 0 || !productsArr || productsArr === undefined) {
@@ -281,7 +282,7 @@ router.patch('/product', async (request: Request, response: Response) => {
 			.catch((err: any) => {
 				console.log(err)
 				return response.status(400).json({
-					error: 'Unable to retrieve and patch selected product'
+					error: `Unable to retrieve product: ${indProd.name} with id: ${indProd.id} as it does not exist`
 				})
 			})
 		if (!productExists) {
@@ -292,7 +293,7 @@ router.patch('/product', async (request: Request, response: Response) => {
 	}
 
 	for (const indProd of productsArr) {
-		let toUpdateArr: any[]
+		let updateSizesArr: any[]
 		await pool.query(SQL`
 			SELECT s.colSize AS sizes, s.id
 				FROM sizes s
@@ -300,74 +301,9 @@ router.patch('/product', async (request: Request, response: Response) => {
 				WHERE p.name = ${indProd.name} AND p.id = ${indProd.id}`)
 			.then((response: any) => {
 				rawQueryResult = response.rows[0]
-				const currentSizes = rawQueryResult.sizes
-
-				const filteredColorArray = currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color)
-
-				if (filteredColorArray.length === 0) {
-					unableProcess = !unableProcess
-				}
-				else {
-					const selectedSizeEl = filteredColorArray[0].sizes.filter((indSizeEl: any) => indSizeEl.size === indProd.size)
-					if (selectedSizeEl.length === 0) {
-						unableProcess = !unableProcess
-					}
-					else if (selectedSizeEl.length === 1 && selectedSizeEl[0].amount <= 0) {
-						unableProcess = !unableProcess
-					}
-					else {
-						toUpdateArr = currentSizes.map((indSize: any) => {
-							const originalSize = indSize
-							if (indSize.color === indProd.color) {
-								const originalSizes = originalSize.sizes
-								const updateSizes = originalSizes.map((indInner: any) => {
-									if (indInner.size === indProd.size) {
-										indInner.amount -= 1
-									}
-									return indInner
-								})
-								return {
-									color: indSize.color,
-									sizes: updateSizes
-								}
-							}
-							else {
-								return indSize
-							}
-						})
-					}
-				}
-
-				// if (currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color).length === 1 && currentSizes) {
-
-				// }
-
-				// unableProcess = currentSizes.filter((sizeEl: any) => sizeEl.color === indProd.color).length === 0
-				// if (currentSizes.filter((indSize: any) => indSize.color === indProd.color)[0].sizes.filter((indArr: any) => indArr.size === indProd.size)[0].amount <= 0) {
-				// 	unableProcess = !unableProcess
-				// }
-				// else {
-				// 	// toUpdateArr = currentSizes.map((indSize: any) => {
-				// 	// 	const originalSize = indSize
-				// 	// 	if (indSize.color === indProd.color) {
-				// 	// 		const originalSizes = originalSize.sizes
-				// 	// 		const updateSizes = originalSizes.map((indInner: any) => {
-				// 	// 			if (indInner.size === indProd.size) {
-				// 	// 				indInner.amount -= 1
-				// 	// 			}
-				// 	// 			return indInner
-				// 	// 		})
-				// 	// 		return {
-				// 	// 			color: indSize.color,
-				// 	// 			sizes: updateSizes
-				// 	// 		}
-				// 	// 	}
-				// 	// 	else {
-				// 	// 		return indSize
-				// 	// 	}
-				// 	// })
-				// 	// console.log(toUpdateArr)
-				// }
+				const sizePatchProc = updateSizesArray(rawQueryResult, indProd.color, indProd.size)
+				unableProcess = sizePatchProc.unableProcess
+				updateSizesArr = sizePatchProc.updateSizesArr
 			})
 			.catch((err: any) => {
 				console.log(err)
@@ -377,17 +313,16 @@ router.patch('/product', async (request: Request, response: Response) => {
 			})
 		if (unableProcess) {
 			return response.status(400).json({
-				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock or this color does not exist`
 			})
 		}
 		await pool.query(SQL`
 			UPDATE sizes
-			SET colSize=${toUpdateArr}
+			SET colSize=${updateSizesArr}
 			WHERE id=${indProd.id}
-			RETURNING * `)
+			RETURNING colSize AS sizes, id `)
 			.then((response: any) => {
-				rawQueryResult = response.rows
-				if (rawQueryResult.length === 0) {
+				if (response.rows.length === 0) {
 					unableProcess = !unableProcess
 				}
 			})
@@ -399,10 +334,9 @@ router.patch('/product', async (request: Request, response: Response) => {
 			})
 		if (unableProcess) {
 			return response.status(400).json({
-				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name} as it is out of stock`
+				error: `Unable to patch size: ${indProd.size}, color: ${indProd.color}, product: ${indProd.name}, failed request to database`
 			})
 		}
-
 	}
 
 	await pool.query(SQL`
@@ -413,8 +347,8 @@ router.patch('/product', async (request: Request, response: Response) => {
 			INNER JOIN sizes s ON p.id = s.id
 			WHERE p.name IN`.append(`(${formatStringInStatement(productsArr.map((indProd: ProductPatch) => indProd.name))})`).append(`AND p.id IN(${formatNumberInStatement(productsArr.map((indProd: ProductPatch) => indProd.id))})`))
 		.then((response: any) => {
-			rawQueryResult = response.rows
-			prodPatchQueryResult = buildSearchOutput(rawQueryResult)
+			rawProductQueryResult = response.rows
+			prodPatchQueryResult = buildSearchOutput(rawProductQueryResult)
 		})
 		.catch((err: any) => {
 			console.log(err)
