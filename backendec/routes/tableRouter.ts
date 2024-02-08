@@ -139,7 +139,7 @@ router.get('/createUserCode', async (request: Request, response: Response) => {
 				userid INT NOT NULL,
 				email VARCHAR(100) NOT NULL,
 				dateCreated TIMESTAMP,
-				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
+				CONSTRAINT FOREIGN_USER FOREIGN KEY(userid) REFERENCES users(id)
 			)
 		`)
 		.then(() => {
@@ -163,7 +163,7 @@ router.get('/createUserOrder', async (request: Request, response: Response) => {
 				stripeid INT NOT NULL,
 				productList JSON[] DEFAULT '{}',
 				dateCreated TIMESTAMP,
-				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
+				CONSTRAINT FOREIGN_USER FOREIGN KEY(userid) REFERENCES users(id)
 			)
 		`)
 		.then(() => {

@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import { Request, Response, NextFunction } from 'express'
+import bcrypt from 'bcrypt'
 import { BrandQueryResult, Brands, ColorSizes, IndProduct, Models, ProductPatch, ProductQueryResult, ProductSizes, SearchQueryResult, SizesPatch, SqlProduct } from './betypes'
 require('dotenv').config()
 
@@ -214,4 +215,12 @@ const updateSizesArray = (rawQueryResult: SizesPatch, colorSelect: string, sizeS
 	}
 }
 
-export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult, updateSizesArray }
+const hashPassword = async (saltRounds: number, rawPassword: string) => {
+	const hashPass: string = await bcrypt.hash(rawPassword, saltRounds)
+	return hashPass
+}
+
+const verifyPassword = async (rawPassword: string, hashPassword: string) => await bcrypt.compare(rawPassword, hashPassword)
+
+
+export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult, updateSizesArray, hashPassword, verifyPassword }
