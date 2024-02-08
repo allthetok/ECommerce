@@ -3,8 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express, { Request, Response } from 'express'
 import SQL from 'sql-template-strings'
-import { pool } from '../src/db'
 import { AxiosError } from 'axios'
+import { pool } from '../src/db'
+import { hashPassword, verifyPassword } from '../helpers/requests'
 require('dotenv').config()
 
 const router = express.Router()
@@ -12,7 +13,7 @@ const router = express.Router()
 router.post('/createUser', async (request: Request, response: Response) => {
 	const body = request.body
 	const email: string = body.email
-	const password: string = body.password
+	const rawPassword: string = body.password
 	const provider: string = body.provider
 	let queryResult: any
 	let userExists = false
@@ -23,7 +24,7 @@ router.post('/createUser', async (request: Request, response: Response) => {
 			error: 'No email provided'
 		})
 	}
-	else if (!password || password === '' || password === null) {
+	else if (!rawPassword || rawPassword === '' || rawPassword === null) {
 		return response.status(400).json({
 			error: 'No password provided'
 		})
@@ -47,6 +48,24 @@ router.post('/createUser', async (request: Request, response: Response) => {
 		})
 	}
 
+	hashPass = await hashPassword(10, rawPassword)
+
+	await pool.query(SQL`
+			INSERT INTO users (email, password, emailVerified, prevlogin, provider)
+			VALUES (${email}, ${hashPass}, FALSE, to_timestamp(${Date.now()} / 1000.0), ${provider})
+			RETURNING id, email, prevlogin, provider
+		`)
+		.then((response: any) => {
+			queryResult = response.rows.length !== 0 ? response.rows[0] : null
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: `Failed to create new user for email: ${email} with method: ${provider}`
+			})
+		})
+
+	return queryResult === null ? response.status(404).json({ error: `Failed to create new user for email: ${email} with method: ${provider}` }) : response.status(200).json(queryResult)
 
 
 })
