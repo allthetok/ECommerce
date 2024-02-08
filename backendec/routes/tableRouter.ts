@@ -142,6 +142,17 @@ router.get('/createUserCode', async (request: Request, response: Response) => {
 				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
 			)
 		`)
+		.then(() => {
+			return response.status(200).json({
+				Message: 'Successfully created table: usercode'
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: 'Unable to create table: usercode'
+			})
+		})
 })
 
 router.get('/createUserOrder', async (request: Request, response: Response) => {
@@ -155,6 +166,17 @@ router.get('/createUserOrder', async (request: Request, response: Response) => {
 				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
 			)
 		`)
+		.then(() => {
+			return response.status(200).json({
+				Message: 'Successfully created table: userorder'
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: 'Unable to create table: userorder'
+			})
+		})
 })
 
 
