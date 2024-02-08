@@ -131,5 +131,31 @@ router.get('/createUser', async (request: Request, response: Response) => {
 		})
 })
 
+router.get('/createUserCode', async (request: Request, response: Response) => {
+	await pool.query(SQL`
+		CREATE TABLE usercode (
+				verificationCode VARCHAR(100) NOT NULL,
+				verifyid SERIAL PRIMARY KEY,
+				userid INT NOT NULL,
+				email VARCHAR(100) NOT NULL,
+				dateCreated TIMESTAMP,
+				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
+			)
+		`)
+})
+
+router.get('/createUserOrder', async (request: Request, response: Response) => {
+	await pool.query(SQL`
+		CREATE TABLE userorder (
+				paymentid SERIAL PRIMARY KEY,
+				userid INT NOT NULL,
+				stripeid INT NOT NULL,
+				productList JSON[] DEFAULT '{}',
+				dateCreated TIMESTAMP,
+				CONSTRAINT FOREIGN_USER FOREIGN_KEY(userid) REFERENCES users(id)
+			)
+		`)
+})
+
 
 export { router }
