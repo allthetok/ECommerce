@@ -105,5 +105,31 @@ router.get('/createSize', async (request: Request, response: Response) => {
 		})
 })
 
+router.get('/createUser', async (request: Request, response: Response) => {
+	await pool.query(SQL`
+		CREATE TABLE users (
+				id SERIAL PRIMARY KEY,
+				email VARCHAR(100) NOT NULL,
+				password VARCHAR(100) NOT NULL,
+				emailVerified BOOLEAN DEFAULT FALSE,
+				prevlogin TIMESTAMP,
+				image VARCHAR(500) DEFAULT '',
+				externalid VARCHAR(200) DEFAULT '',
+				provider VARCHAR(100) NOT NULL
+			)
+		`)
+		.then(() => {
+			return response.status(200).json({
+				Message: 'Successfully created table: users'
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: 'Unable to create table: users'
+			})
+		})
+})
+
 
 export { router }
