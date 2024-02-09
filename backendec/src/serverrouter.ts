@@ -9,6 +9,7 @@ import { router as deprecatedRouter } from '../routes/placeholderproductRouter'
 import { router as tableRouter } from '../routes/tableRouter'
 import { router as insertRouter } from '../routes/insertDBRouter'
 import { router as productRouter } from '../routes/productRouter'
+import { router as userRouter } from '../routes/userRouter'
 
 
 const app = express()
@@ -20,6 +21,8 @@ app.use('/api/deprecated', deprecatedRouter)
 app.use('/api/shoes', productRouter)
 app.use('/api/table', tableRouter)
 app.use('/api/insert', insertRouter)
+app.use('/api/user', userRouter)
+
 
 const PORT = process.env.API_PORT || 3002
 

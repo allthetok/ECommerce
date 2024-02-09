@@ -396,3 +396,4 @@ router.patch('/userDetails', async (request: Request, response: Response) => {
 
 })
 
+export { router }
