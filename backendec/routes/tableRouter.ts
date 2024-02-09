@@ -110,7 +110,7 @@ router.get('/createUser', async (request: Request, response: Response) => {
 		CREATE TABLE users (
 				id SERIAL PRIMARY KEY,
 				email VARCHAR(100) NOT NULL,
-				password VARCHAR(100) NOT NULL,
+				password VARCHAR(100) DEFAULT '',
 				emailVerified BOOLEAN DEFAULT FALSE,
 				prevlogin TIMESTAMP,
 				image VARCHAR(500) DEFAULT '',
@@ -175,6 +175,21 @@ router.get('/createUserOrder', async (request: Request, response: Response) => {
 			console.log(err)
 			return response.status(500).json({
 				error: 'Unable to create table: userorder'
+			})
+		})
+})
+
+router.get('/dropTable', async (request: Request, response: Response) => {
+	await pool.query(`DROP TABLE ${request.body.tableToDrop}`)
+		.then(() => {
+			return response.status(200).json({
+				Message: `Successfully dropped table: ${request.body.tableToDrop}`
+			})
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(500).json({
+				error: `Unable to drop table: ${request.body.tableToDrop}`
 			})
 		})
 })
