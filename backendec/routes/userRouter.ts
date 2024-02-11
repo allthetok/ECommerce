@@ -197,7 +197,7 @@ router.post('/loginExternal', async (request: Request, response: Response) => {
 	}
 	else if (!provider || provider === '' || provider === null) {
 		return response.status(400).json({
-			error: 'No username provided'
+			error: 'No provider specified'
 		})
 	}
 
