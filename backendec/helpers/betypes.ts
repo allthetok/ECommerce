@@ -84,6 +84,12 @@ interface SizesPatch {
 	id: number
 }
 
+interface Mail {
+	from: string,
+	to: string,
+	subject: string,
+	text: string
+}
 
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type ProductSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch, type SizesPatch }
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type ProductSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch, type SizesPatch, type Mail }

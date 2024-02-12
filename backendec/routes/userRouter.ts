@@ -5,10 +5,23 @@ import express, { Request, Response } from 'express'
 import SQL, { SQLStatement } from 'sql-template-strings'
 import { AxiosError } from 'axios'
 import { pool } from '../src/db'
+import nodemailer from 'nodemailer'
 import { hashPassword, verifyPassword } from '../helpers/requests'
+import { generateVerificationCode, transport } from '../src/smtptransport'
+import { Mail } from '../helpers/betypes'
 require('dotenv').config()
 
 const router = express.Router()
+
+const transporter = nodemailer.createTransport(transport)
+transporter.verify((error: Error | null, success: true): void => {
+	if (error) {
+		console.error(error)
+	}
+	else {
+		console.log('Connected to SMTP transporter')
+	}
+})
 
 router.post('/createUser', async (request: Request, response: Response) => {
 	const body = request.body
@@ -393,7 +406,21 @@ router.patch('/userDetails', async (request: Request, response: Response) => {
 			})
 		return queryResult ? response.status(200).json(queryResult) : response.status(404).json({ error: `Unable to edit user details for userid: ${userid}` })
 	}
+})
 
+router.post('/verificationCode', async (request: Request, response: Response) => {
+	const body = request.body
+	const email: string = body.email
+	let id: number
+	let queryResult: any
+
+	const verificationCodeGenerated: number = generateVerificationCode()
+	const mail: Mail = {
+		from: process.env.SMTP_FROM_EMAIL || 'noreply.atkicks@gmail.com',
+		to: email,
+		subject: 'Verification Code from ATKicks',
+		text: `Hello, your ATKicks Verification Code is: ${verificationCodeGenerated} . Please do not respond to this email.`
+	}
 })
 
 export { router }
