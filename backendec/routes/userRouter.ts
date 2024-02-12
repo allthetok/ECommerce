@@ -456,15 +456,26 @@ router.post('/verificationCode', async (request: Request, response: Response) =>
 			generatedCode = false
 		})
 	return generatedCode ? response.status(200).json({ id: id!, email: email, message: 'Success' }) : response.status(400).json({ error: `Failed to generate user verification code for user with email: ${email}` })
+})
 
+router.post('/resolveCode', async (request: Request, response: Response) => {
+	const body = request.body
+	const email: string = body.email
+	let queryResult: any
 
-	// CREATE TABLE usercode (
-	// 	verificationCode VARCHAR(100) NOT NULL,
-	// 	verifyid SERIAL PRIMARY KEY,
-	// 	userid INT NOT NULL,
-	// 	email VARCHAR(100) NOT NULL,
-	// 	dateCreated TIMESTAMP,
-	// 	CONSTRAINT FOREIGN_USER FOREIGN KEY(userid) REFERENCES users(id)
+	await pool.query(SQL`
+		SELECT c.verificationCode
+			FROM usercode c
+			WHERE c.email=${email}
+		ORDER BY dateCreated DESC
+		`)
+		.then((response: any) => {
+			queryResult = response.rows && response.rows.length !== 0 ? response.rows[0] : null
+		})
+		.catch((err: any) => {
+			queryResult = null
+		})
+	return queryResult !== null ? response.status(200).json(queryResult) : response.status(400).json({ error: `Unable to retrieve verificationCode from usercode table for: ${email}` })
 })
 
 export { router }
