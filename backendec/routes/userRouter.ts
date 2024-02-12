@@ -412,7 +412,7 @@ router.post('/verificationCode', async (request: Request, response: Response) =>
 	const body = request.body
 	const email: string = body.email
 	let id: number
-	let queryResult: any
+	let generatedCode: boolean
 
 	const verificationCodeGenerated: number = generateVerificationCode()
 	const mail: Mail = {
@@ -421,6 +421,50 @@ router.post('/verificationCode', async (request: Request, response: Response) =>
 		subject: 'Verification Code from ATKicks',
 		text: `Hello, your ATKicks Verification Code is: ${verificationCodeGenerated} . Please do not respond to this email.`
 	}
+
+	transporter.sendMail(mail, (err: Error | null, data) => {
+		if (err) {
+			return response.status(400).json({
+				status: 'fail',
+			})
+		}
+	})
+
+	await pool.query(SQL`
+		SELECT u.id
+			FROM users u
+			WHERE u.email=${email} AND u.provider='ATKNative' 
+		`)
+		.then((response: any) => {
+			id = response.rows.length === 1 ? response.rows[0].id : 0
+		})
+		.catch((err: any) => {
+			return response.status(400).json({ error: `Failed to query users table for userid on email: ${email}` })
+		})
+
+	await pool.query(SQL`
+		INSERT INTO usercode 
+			(verificationCode, userid, email, dateCreated)
+			VALUES 
+			(${String(verificationCodeGenerated)}, ${id!}, ${email}, to_timestamp(${Date.now()} / 1000.0))
+		`)
+		.then((response: any) => {
+			generatedCode = response.rows && response.rows.length === 1
+		})
+		.catch((err: any) => {
+			console.log(err)
+			generatedCode = false
+		})
+	return generatedCode ? response.status(200).json({ id: id!, email: email, message: 'Success' }) : response.status(400).json({ error: `Failed to generate user verification code for user with email: ${email}` })
+
+
+	// CREATE TABLE usercode (
+	// 	verificationCode VARCHAR(100) NOT NULL,
+	// 	verifyid SERIAL PRIMARY KEY,
+	// 	userid INT NOT NULL,
+	// 	email VARCHAR(100) NOT NULL,
+	// 	dateCreated TIMESTAMP,
+	// 	CONSTRAINT FOREIGN_USER FOREIGN KEY(userid) REFERENCES users(id)
 })
 
 export { router }
