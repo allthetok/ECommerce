@@ -127,7 +127,7 @@ router.post('/login', async (request: Request, response: Response) => {
 				WHERE id=${queryResult.id}
 				AND email=${queryResult.email}
 				AND provider=${queryResult.provider}
-			RETURNING id, email, emailVerified, provider
+			RETURNING id, email, prevlogin, provider
 		`)
 		.then((response: any) => {
 			queryResult = response ? response.rows[0] : response
