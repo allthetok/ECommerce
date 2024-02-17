@@ -222,5 +222,11 @@ const hashPassword = async (saltRounds: number, rawPassword: string) => {
 
 const verifyPassword = async (rawPassword: string, hashPassword: string) => await bcrypt.compare(rawPassword, hashPassword)
 
+const stringArrayToPostgresArray = (inputArray: string[]) => {
+	let stringifiedArray = JSON.stringify(inputArray)
+	stringifiedArray = stringifiedArray.replace('[', '').replace(']', '')
+	return `{${stringifiedArray}}`
+}
 
-export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult, updateSizesArray, hashPassword, verifyPassword }
+
+export { requestLogger, corsOptions, formatStringInStatement, formatNumberInStatement, buildBrandOutput, buildModelOutput, buildProductOutput, buildSearchOutput, formatSQLColToProduct, mapQueryResult, updateSizesArray, hashPassword, verifyPassword, stringArrayToPostgresArray }

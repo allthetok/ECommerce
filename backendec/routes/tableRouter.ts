@@ -160,8 +160,8 @@ router.get('/createUserOrder', async (request: Request, response: Response) => {
 		CREATE TABLE userorder (
 				paymentid SERIAL PRIMARY KEY,
 				userid INT NOT NULL,
-				stripeid INT NOT NULL,
-				productList JSON[] DEFAULT '{}',
+				stripeid VARCHAR(500) NOT NULL,
+				productList VARCHAR(200)[] DEFAULT '{}',
 				dateCreated TIMESTAMP,
 				CONSTRAINT FOREIGN_USER FOREIGN KEY(userid) REFERENCES users(id)
 			)
@@ -178,6 +178,7 @@ router.get('/createUserOrder', async (request: Request, response: Response) => {
 			})
 		})
 })
+
 
 router.get('/dropTable', async (request: Request, response: Response) => {
 	await pool.query(`DROP TABLE ${request.body.tableToDrop}`)

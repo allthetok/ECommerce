@@ -6,7 +6,7 @@ import SQL, { SQLStatement } from 'sql-template-strings'
 import { AxiosError } from 'axios'
 import { pool } from '../src/db'
 import nodemailer from 'nodemailer'
-import { hashPassword, verifyPassword } from '../helpers/requests'
+import { buildProductOutput, formatStringInStatement, hashPassword, mapQueryResult, stringArrayToPostgresArray, verifyPassword } from '../helpers/requests'
 import { generateVerificationCode, transport } from '../src/smtptransport'
 import { Mail } from '../helpers/betypes'
 require('dotenv').config()
@@ -476,6 +476,56 @@ router.post('/resolveCode', async (request: Request, response: Response) => {
 			queryResult = null
 		})
 	return queryResult !== null ? response.status(200).json(queryResult) : response.status(400).json({ error: `Unable to retrieve verificationCode from usercode table for: ${email}` })
+})
+
+router.post('/createOrder', async (request: Request, response: Response) => {
+	const body = request.body
+	const userid: number = body.userid
+	const productList: string[] = body.products
+	const stripeid: string = body.sessionId
+	let orderQueryResult: any
+	let productQueryResult: any
+	let rawQueryResult: any
+
+	await pool.query(SQL`
+		INSERT INTO usercode
+			(userid, stripeid, productList, dateCreated)
+			VALUES (${userid}, ${stripeid}, ${stringArrayToPostgresArray(productList)}, to_timestamp(${Date.now()} / 1000.0))
+		RETURNING paymentid, userid, stripeid, productList
+		`)
+		.then((response: any) => {
+			orderQueryResult = response.rows.length !== 0 ? response.rows[0] : null
+		})
+		.catch((err: any) => {
+			return response.status(404).json({
+				error: `Failed to insert payment record for user: ${userid}, with products: ${productList} on stripe payment ID: ${stripeid}`
+			})
+		})
+	const productInStatement = formatStringInStatement(productList)
+	await pool.query(SQL`
+		SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+			FROM products p
+			INNER JOIN brands b ON p.brandId = b.id
+			INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+			INNER JOIN sizes s ON p.id = s.id
+			WHERE p.name IN`.append(`(${productInStatement})`))
+		.then((response: any) => {
+			rawQueryResult = response.rows
+			productQueryResult = mapQueryResult(rawQueryResult)
+		})
+		.catch((err: any) => {
+			console.log(err)
+			return response.status(404).json({
+				error: `Unable to retrieve product details for these products: ${productList.join(',')} from database`
+			})
+		})
+
+	return orderQueryResult ? response.status(200).json({
+		paymentDetails: orderQueryResult,
+		productsOrder: productQueryResult
+	}) : response.status(404).json({
+		error: `Failed to insert payment record for user: ${userid}, with products: ${productList} on stripe payment ID: ${stripeid}`
+	})
 })
 
 export { router }
