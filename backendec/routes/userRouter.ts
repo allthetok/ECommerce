@@ -478,7 +478,7 @@ router.post('/resolveCode', async (request: Request, response: Response) => {
 	return queryResult !== null ? response.status(200).json(queryResult) : response.status(400).json({ error: `Unable to retrieve verificationCode from usercode table for: ${email}` })
 })
 
-router.post('/createOrder', async (request: Request, response: Response) => {
+router.post('/userOrder', async (request: Request, response: Response) => {
 	const body = request.body
 	const userid: number = body.userid
 	const productList: string[] = body.products
