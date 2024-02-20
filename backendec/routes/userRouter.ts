@@ -488,7 +488,7 @@ router.post('/userOrder', async (request: Request, response: Response) => {
 	let rawQueryResult: any
 
 	await pool.query(SQL`
-		INSERT INTO usercode
+		INSERT INTO userorder
 			(userid, stripeid, productList, dateCreated)
 			VALUES (${userid}, ${stripeid}, ${stringArrayToPostgresArray(productList)}, to_timestamp(${Date.now()} / 1000.0))
 		RETURNING paymentid, userid, stripeid, productList
@@ -526,6 +526,56 @@ router.post('/userOrder', async (request: Request, response: Response) => {
 	}) : response.status(404).json({
 		error: `Failed to insert payment record for user: ${userid}, with products: ${productList} on stripe payment ID: ${stripeid}`
 	})
+})
+
+router.post('/userOrders', async (request: Request, response: Response) => {
+	const body = request.body
+	const userid: number = body.userid
+	const allOrdersQueryResult: any[] = []
+	let rawOrdersQueryResult: any
+	let rawQueryResult: any
+
+	await pool.query(SQL`
+		SELECT * FROM userorder uo
+			WHERE uo.userid=${userid}
+		ORDER BY uo.dateCreated DESC
+		`)
+		.then((response: any) => {
+			rawOrdersQueryResult = response.rows
+		})
+		.catch((err: any) => {
+			return response.status(404).json({
+				error: `Unable to retrieve all orders for userid: ${userid}`
+			})
+		})
+	for (const rawOrder of rawOrdersQueryResult) {
+		const productList: string[] = rawOrder.productList
+		const productInStatement = formatStringInStatement(productList)
+		const indOrderEl: any = {
+			order: rawOrder,
+			productsOrder: []
+		}
+		await pool.query(SQL`
+			SELECT p.id, b.name AS brand, b.id AS brandId, m.id AS modelId, m.name AS modelName, p.name, CAST(p.releaseDate AS DATE) AS releaseDate, p.colors, p.price, p.description, s.colSize AS sizes
+				FROM products p
+				INNER JOIN brands b ON p.brandId = b.id
+				INNER JOIN models m ON p.modelId = m.id AND b.id = m.brandId
+				INNER JOIN sizes s ON p.id = s.id
+				WHERE p.name IN`.append(`(${productInStatement})`))
+			.then((response: any) => {
+				rawQueryResult = response.rows
+				indOrderEl.productsOrder = mapQueryResult(rawQueryResult)
+			})
+			.catch((err: any) => {
+				console.log(err)
+				return response.status(404).json({
+					error: `Unable to retrieve product details for these products: ${productList.join(',')} from database`
+				})
+			})
+		allOrdersQueryResult.push(indOrderEl)
+	}
+
+	return response.status(200).json({ allOrders: allOrdersQueryResult })
 })
 
 export { router }
