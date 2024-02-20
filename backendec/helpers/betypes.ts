@@ -91,5 +91,18 @@ interface Mail {
 	text: string
 }
 
+interface Order {
+	paymentid: number,
+	userid: number,
+	stripeid: string,
+	productlist: string[],
+	datecreated: Date
+}
 
-export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type ProductSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch, type SizesPatch, type Mail }
+interface IndOrder {
+	order: Order,
+	productsOrder: IndProduct[]
+}
+
+
+export { type IndProduct, type Brands, type Models, type Colors, type ColorSizes, type ProductSizes, type SqlProduct, type SearchQueryResult, type ProductQueryResult, type BrandQueryResult, type ModelQueryResult, type ProductPatch, type SizesPatch, type Mail, type Order, type IndOrder }

@@ -8,7 +8,7 @@ import { pool } from '../src/db'
 import nodemailer from 'nodemailer'
 import { buildProductOutput, formatStringInStatement, hashPassword, mapQueryResult, stringArrayToPostgresArray, verifyPassword } from '../helpers/requests'
 import { generateVerificationCode, transport } from '../src/smtptransport'
-import { Mail } from '../helpers/betypes'
+import { IndOrder, Mail, Order } from '../helpers/betypes'
 require('dotenv').config()
 
 const router = express.Router()
@@ -531,8 +531,8 @@ router.post('/userOrder', async (request: Request, response: Response) => {
 router.post('/userOrders', async (request: Request, response: Response) => {
 	const body = request.body
 	const userid: number = body.userid
-	const allOrdersQueryResult: any[] = []
-	let rawOrdersQueryResult: any
+	const allOrdersQueryResult: IndOrder[] = []
+	let rawOrdersQueryResult: Order[]
 	let rawQueryResult: any
 
 	await pool.query(SQL`
@@ -549,9 +549,8 @@ router.post('/userOrders', async (request: Request, response: Response) => {
 			})
 		})
 	for (const rawOrder of rawOrdersQueryResult) {
-		const productList: string[] = rawOrder.productList
-		const productInStatement = formatStringInStatement(productList)
-		const indOrderEl: any = {
+		const productInStatement = formatStringInStatement(rawOrder.productlist)
+		const indOrderEl: IndOrder = {
 			order: rawOrder,
 			productsOrder: []
 		}
@@ -569,12 +568,11 @@ router.post('/userOrders', async (request: Request, response: Response) => {
 			.catch((err: any) => {
 				console.log(err)
 				return response.status(404).json({
-					error: `Unable to retrieve product details for these products: ${productList.join(',')} from database`
+					error: `Unable to retrieve product details for these products: ${rawOrder.productlist.join(',')} from database`
 				})
 			})
 		allOrdersQueryResult.push(indOrderEl)
 	}
-
 	return response.status(200).json({ allOrders: allOrdersQueryResult })
 })
 
