@@ -8,7 +8,7 @@ import { pool } from '../src/db'
 import nodemailer from 'nodemailer'
 import { buildProductOutput, formatStringInStatement, hashPassword, mapQueryResult, stringArrayToPostgresArray, verifyPassword } from '../helpers/requests'
 import { generateVerificationCode, transport } from '../src/smtptransport'
-import { IndOrder, Mail, Order } from '../helpers/betypes'
+import { IndOrder, IndProduct, Mail, Order } from '../helpers/betypes'
 require('dotenv').config()
 
 const router = express.Router()
@@ -483,15 +483,15 @@ router.post('/userOrder', async (request: Request, response: Response) => {
 	const userid: number = body.userid
 	const productList: string[] = body.products
 	const stripeid: string = body.sessionId
-	let orderQueryResult: any
-	let productQueryResult: any
+	let orderQueryResult: Order
+	let productQueryResult: IndProduct[]
 	let rawQueryResult: any
 
 	await pool.query(SQL`
 		INSERT INTO userorder
 			(userid, stripeid, productList, dateCreated)
 			VALUES (${userid}, ${stripeid}, ${stringArrayToPostgresArray(productList)}, to_timestamp(${Date.now()} / 1000.0))
-		RETURNING paymentid, userid, stripeid, productList
+		RETURNING paymentid, userid, stripeid, productlist, datecreated
 		`)
 		.then((response: any) => {
 			orderQueryResult = response.rows.length !== 0 ? response.rows[0] : null
