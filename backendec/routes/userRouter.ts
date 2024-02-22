@@ -447,6 +447,7 @@ router.post('/verificationCode', async (request: Request, response: Response) =>
 			(verificationCode, userid, email, dateCreated)
 			VALUES 
 			(${String(verificationCodeGenerated)}, ${id!}, ${email}, to_timestamp(${Date.now()} / 1000.0))
+		RETURNING verificationCode, userid, email, dateCreated
 		`)
 		.then((response: any) => {
 			generatedCode = response.rows && response.rows.length === 1
