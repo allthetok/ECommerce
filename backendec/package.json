@@ -4,7 +4,8 @@
   "description": "Dockerized NodeJS API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/serverrouter.ts",
+    "startold": "nodemon src/serverrouter.ts",
+	"start": "ts-node --esm src/serverrouter.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Allen Tokjuman",
