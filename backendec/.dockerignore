@@ -1,2 +1,4 @@
 node_modules
 mockproduct/mockdata.js
+mockproduct/db.ts
+mockproduct/prodinsert.ts
