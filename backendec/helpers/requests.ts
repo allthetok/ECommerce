@@ -16,8 +16,8 @@ const requestLogger = (request: Request, response: Response, next: NextFunction)
 }
 
 const corsOptions = {
-	origin: ['http://localhost:3000'],
-	// origin: true
+	// origin: ['http://localhost:3000'],
+	origin: true,
 	credentials: true,	//access-control-allow-credentials:true
 	optionSuccessStatus: 200
 }
