@@ -1,5 +1,5 @@
-kickserver.allentok.com {
-	reverse_proxy kickserver:3002 {
+server.allentok.com {
+	reverse_proxy server:3002 {
         header_down Strict-Transport-Security max-age=31536000;
 	}
 }
