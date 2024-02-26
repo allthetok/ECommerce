@@ -16,8 +16,8 @@ const requestLogger = (request: Request, response: Response, next: NextFunction)
 }
 
 const corsOptions = {
-	// origin: ['http://localhost:3000'],
-	origin: '*',
+	origin: ['http://localhost:3000', 'https://atkicks.allentok.com', 'https://atkicks-fe.vercel.app', 'https://atkicks-fe-allthetok.vercel.app', 'https://atkicks-fe-git-main-allthetok.vercel.app', 'https://atkicks-9q5owjh4t-allthetok.vercel.app'],
+	// origin: '*',
 	credentials: true,	//access-control-allow-credentials:true
 	optionSuccessStatus: 200
 }
