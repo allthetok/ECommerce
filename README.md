@@ -5,15 +5,16 @@ This is the NodeJS/Express/Postgres/Caddy Dockerized REST API Container, which i
 Refer to /helpers for any helper functions used within the endpoints, and /routes to see the individual routers such as tableRouter.ts for creating tables, productRouter.ts for product-related routes, userRouter.ts for user-related routes, insertDBRouter.ts for inserting data into the PG image dockerized container. See /src/serverrouter.ts to see the Express main app router.
 
 Frameworks and Libraries Used:
+- NodeJS
 - ExpressJS
-- Typescript
+- PostgreSQL (Docker Image)
 - Docker & Docker Compose
 - Caddy (reverse proxy)
+- Typescript
 - Axios
 - BCrypt
 - Cors
 - NodeMailer/SMTP Server
-- PostgreSQL
 
 
 Here are some screenshots from the web app:
